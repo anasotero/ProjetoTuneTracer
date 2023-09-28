@@ -20,6 +20,7 @@ public class config extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(ocarina.getImage());
 		getContentPane().setBackground(fundo);
+		//só pra teste
 		
 		
 		

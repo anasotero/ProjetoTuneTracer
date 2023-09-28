@@ -13,7 +13,7 @@ public class RecuperarSenhaDAO {
 		
 	}
 	
-	public boolean VerificarDados(RecuperarSenhaVO r) throws SQLException {
+	public boolean AlterarSenha(RecuperarSenhaVO r) throws SQLException {
 		String sql = "UPDATE cadastro SET senha = ? WHERE email = ? AND palavra_chave = ?";
 		
 		try(PreparedStatement st = conect.prepareStatement(sql)) {
