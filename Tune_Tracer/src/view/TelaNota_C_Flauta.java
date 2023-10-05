@@ -20,8 +20,12 @@ public class TelaNota_C_Flauta extends JFrame {
 	Font fonte = new Font("Arial", Font.PLAIN, 26);
 
 	// adicionando as fotos
+<<<<<<< HEAD
 	ImageIcon CBeta = new ImageIcon("imagens/representacao.jpg");
 	ImageIcon C = new ImageIcon(CBeta.getImage().getScaledInstance(500,250, Image.SCALE_DEFAULT));
+=======
+	ImageIcon C = new ImageIcon("imagens/C_Flauta.jpeg");
+>>>>>>> 7e54e61dd832634c2170593260ec180afdf25d2f
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	ImageIcon favoritado = new ImageIcon("imagens/estrelaPreta.png");
 	ImageIcon favoritadoRE = new ImageIcon(favoritado.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
@@ -118,7 +122,11 @@ public class TelaNota_C_Flauta extends JFrame {
 
 		// configurações da foto da nota
 		imagemC.setLayout(null);
+<<<<<<< HEAD
 		imagemC.setBounds(60, 140, 639, 190);
+=======
+		imagemC.setBounds(157, 153, 438, 137);
+>>>>>>> 7e54e61dd832634c2170593260ec180afdf25d2f
 		getContentPane().add(imagemC);
 
 		// configurações da foto do ícone do som 

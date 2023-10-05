@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 
 public class config extends JFrame {
 
+<<<<<<< HEAD
 	ImageIcon ocarina = new ImageIcon(getClass().getResource("ocarina.png"));
+=======
+	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
+>>>>>>> 7e54e61dd832634c2170593260ec180afdf25d2f
 	Color fundo = new Color(255, 245, 239);
 
 	public config() {
