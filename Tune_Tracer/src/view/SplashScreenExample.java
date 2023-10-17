@@ -21,21 +21,20 @@ public class SplashScreenExample extends JFrame{
 	
 	public SplashScreenExample(){
 		
-		setTitle("Tune Tracer");
+		/*setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
 		setBounds(1080, 720, 780, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
+		*/
 		}
-	
+
 	public static void main(String[] args) {
 		SplashScreen splash = new SplashScreen(11840);
 		
 		splash.showSplash();
 		splash.hideSplash();
-		
 		
 		new TelaCadastro(cadastroCon, sq);
 	}
@@ -43,7 +42,7 @@ public class SplashScreenExample extends JFrame{
 
 class SplashScreen extends JFrame {
 
-	
+	private ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	private int duration;
 
 
@@ -55,17 +54,19 @@ class SplashScreen extends JFrame {
 		JPanel content = new JPanel();
 
 		// Use a imagem desejada para o splash screen
-		ImageIcon splashIcon = new ImageIcon("imagens/TuneSplash.gif");
+		ImageIcon splashIcon = new ImageIcon("imagens/animacao.gif");
 		ImageIcon splashIcon2 = new ImageIcon(splashIcon.getImage().getScaledInstance(1000, 500, Image.SCALE_DEFAULT));
 		JLabel label = new JLabel(splashIcon2);
-		content.add(label);
-
+		content.add(label);		
+		
 		// Configurando a janela de splash
 		setUndecorated(true);
 		getContentPane().add(content);
 		pack();
-		setLocationRelativeTo(null);
 		setVisible(true);
+		setBounds(1080, 780, 760, 500);
+		setIconImage(ocarina.getImage());
+		setLocationRelativeTo(null);
 
 		// Aguarda o tempo especificado (em milissegundos)
 		try {
