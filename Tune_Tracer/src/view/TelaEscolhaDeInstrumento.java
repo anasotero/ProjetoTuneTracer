@@ -17,7 +17,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JLabel lblViolao, lblTeclado, lblFlauta;
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
-	
 	ImageIcon imagemGuitarNR = new ImageIcon("imagens/violão.png");
 	ImageIcon imagemGuitar = new ImageIcon(imagemGuitarNR.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	ImageIcon imagemTecladoNR = new ImageIcon("imagens/teclado.png");

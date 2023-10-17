@@ -90,10 +90,6 @@ public class TelaCadastro extends JFrame {
 
 				cadastrar();
 
-				/*
-				 * TelaEscolhaDeInstrumento TEDI = new TelaEscolhaDeInstrumento();
-				 * TEDI.setVisible(true); dispose();
-				 */
 			}
 
 		});

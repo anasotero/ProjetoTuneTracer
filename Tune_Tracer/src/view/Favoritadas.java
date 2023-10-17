@@ -89,11 +89,7 @@ public class Favoritadas extends JFrame {
     }
 
     private void carregarRegistrosDoBancoDeDados() {
-<<<<<<< HEAD
         String url = "jdbc:mysql://localhost:3306/tunetracer";
-=======
-        String url = "jdbc:mysql://localhost:3306/tune_tracer";
->>>>>>> 7e54e61dd832634c2170593260ec180afdf25d2f
         String usuario = "root";
         String senha = "root";
 

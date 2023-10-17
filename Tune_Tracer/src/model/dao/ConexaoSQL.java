@@ -6,11 +6,7 @@ import java.sql.SQLException;
 
 public class ConexaoSQL {
 
-<<<<<<< HEAD
 	private static final String URL = "jdbc:mysql://localhost:3306/tunetracer";
-=======
-	private static final String URL = "jdbc:mysql://localhost:3306/tune_tracer";
->>>>>>> 7e54e61dd832634c2170593260ec180afdf25d2f
 	private static final String USUARIO = "root";
 	private static final String SENHA = "root";
 	

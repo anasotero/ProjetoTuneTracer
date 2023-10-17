@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import controller.CadastroController;
 import model.dao.ConexaoSQL;
+import view.SplashScreenExample;
 import view.TelaCadastro;
 
 public class Run {
@@ -13,7 +14,7 @@ public class Run {
 		
 		ConexaoSQL sq = new ConexaoSQL();
 		CadastroController cadastroCon = new CadastroController(sq);
-	
+		
 		try(Connection conected = sq.getConect()){
 			
 			TelaCadastro tela = new TelaCadastro(cadastroCon, sq);
