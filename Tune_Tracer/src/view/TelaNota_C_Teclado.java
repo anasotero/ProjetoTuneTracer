@@ -34,8 +34,13 @@ public class TelaNota_C_Teclado extends JFrame {
 	JLabel nota_C = new JLabel("C");
 	JLabel lblSom = new JLabel(som2);
 	JPanel panel = new JPanel();
+	
+	private static Connection connect;
 
-	public TelaNota_C_Teclado() {
+	public TelaNota_C_Teclado(Connection connect) {
+		
+		this.connect = connect;
+		
 		// configurações da janela
 		setTitle("Tune Tracer");
 		setBounds(1080, 720, 780, 500);
@@ -71,7 +76,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(connect);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -79,7 +84,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(connect);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -95,7 +100,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado();
+				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado(connect);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -104,7 +109,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(connect);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -199,7 +204,7 @@ public class TelaNota_C_Teclado extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaNota_C_Teclado();
+		new TelaNota_C_Teclado(connect);
 	}
 
 }

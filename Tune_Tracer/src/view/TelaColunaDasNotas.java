@@ -2,6 +2,8 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+
 import javax.swing.*;
 
 import controller.Metodos;
@@ -12,8 +14,12 @@ public class TelaColunaDasNotas extends JFrame{
 
 	Color CorFundo = new Color(255, 245, 239);
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
+	private static Connection connect;
 
-	public TelaColunaDasNotas() {
+	public TelaColunaDasNotas(Connection connect) {
+		
+		this.connect = connect;
+		
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -33,7 +39,7 @@ public class TelaColunaDasNotas extends JFrame{
 			
 	public void actionPerformed(ActionEvent e) {
 		        Metodos.clickedSound();
-				TelaNota_C TN_C = new TelaNota_C();
+				TelaNota_C TN_C = new TelaNota_C(connect);
 				TN_C.setVisible(true);
 				dispose();
 			}
@@ -292,6 +298,18 @@ public class TelaColunaDasNotas extends JFrame{
 		btnMenu.add(setting);
 		setVisible(true);
 		
+		setting.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					config Config = new config(connect);
+					Config.setVisible(true);
+					dispose();
+				
+			}
+			
+		});
+		
 		JMenuItem notasFavoritas = new JMenuItem("Favoritadas");
 		notasFavoritas.setForeground(new Color(255, 255, 255));
 		notasFavoritas.setBackground(new Color(255, 145, 77));
@@ -301,7 +319,7 @@ public class TelaColunaDasNotas extends JFrame{
 		notasFavoritas.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        Favoritadas TFA = new Favoritadas();
+		        Favoritadas TFA = new Favoritadas(connect);
 		        TFA.setVisible(true);
 		        dispose();
 		    }
@@ -317,7 +335,7 @@ public class TelaColunaDasNotas extends JFrame{
 		retornar.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento(connect);
 		        TDI.setVisible(true);
 		        dispose();
 		    }
@@ -326,6 +344,6 @@ public class TelaColunaDasNotas extends JFrame{
 	        
 
 	public static void main(String[] args) {
-		new TelaColunaDasNotas();
+		new TelaColunaDasNotas(connect);
 	}
 }

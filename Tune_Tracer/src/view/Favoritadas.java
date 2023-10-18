@@ -18,8 +18,12 @@ public class Favoritadas extends JFrame {
 	private JTable tabela;
     private DefaultTableModel model;
     private JPanel contentPane;
+    private static Connection connect;
 
-    public Favoritadas() {
+    public Favoritadas(Connection connect) {
+    	
+    	this.connect = connect;
+    	
         setTitle("Tune Tracer");
         setResizable(false);
         setBounds(1080, 720, 780, 500);
@@ -79,7 +83,7 @@ public class Favoritadas extends JFrame {
      		retornar.addActionListener(new ActionListener() {
      		    @Override
      		    public void actionPerformed(ActionEvent e) {
-     		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+     		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento(connect);
      		        TDI.setVisible(true);
      		        dispose();
      		    }
@@ -124,7 +128,7 @@ public class Favoritadas extends JFrame {
 
     public static void main(String[] args) {
     	
-            new Favoritadas();
+            new Favoritadas(connect);
 
     }
 

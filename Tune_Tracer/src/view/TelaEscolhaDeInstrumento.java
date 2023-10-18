@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+
 import controller.Metodos;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +17,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JPanel contentpane;
 	private JPanel panel_1, panel_2;
 	private JLabel lblViolao, lblTeclado, lblFlauta;
+	private static Connection connect;
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	
@@ -26,7 +29,10 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	ImageIcon imagemFlauta = new ImageIcon(imagemFlautaNR.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT));
 
 	
-	public TelaEscolhaDeInstrumento() {
+	public TelaEscolhaDeInstrumento(Connection connect) {
+		
+		this.connect = connect;
+		
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -85,7 +91,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(connect);
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.guitarSound();
@@ -102,7 +108,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado();
+				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado(connect);
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.keyboardSound();
@@ -119,7 +125,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta();
+				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta(connect);
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.fluteSound();
@@ -136,6 +142,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaEscolhaDeInstrumento();
+		new TelaEscolhaDeInstrumento(connect);
 	}
 }

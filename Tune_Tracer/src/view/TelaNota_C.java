@@ -12,7 +12,7 @@ import controller.Metodos;
 @SuppressWarnings("serial")
 public class TelaNota_C extends JFrame {
 
-	private ConexaoSQL sq;
+	private static Connection sq;
 
 	Color CorFundo = new Color(255, 245, 239);
 	Color CorPanel = new Color(255, 145, 77);
@@ -35,7 +35,7 @@ public class TelaNota_C extends JFrame {
 	JLabel lblSom = new JLabel(som2);
 	JPanel panel = new JPanel();
 
-	public TelaNota_C() {
+	public TelaNota_C(Connection sq) {
 		// configurações da janela
 		setTitle("Tune Tracer");
 		setBounds(1080, 720, 780, 500);
@@ -71,7 +71,7 @@ public class TelaNota_C extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -79,7 +79,7 @@ public class TelaNota_C extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -95,7 +95,7 @@ public class TelaNota_C extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -104,7 +104,7 @@ public class TelaNota_C extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -174,7 +174,7 @@ public class TelaNota_C extends JFrame {
 
 	private void favoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO FV = new FavoritosVO("C", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.favoritar(FV);
@@ -187,7 +187,7 @@ public class TelaNota_C extends JFrame {
 
 	private void DesfavoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO si = new FavoritosVO("C", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.desfavoritar(si);
@@ -199,7 +199,7 @@ public class TelaNota_C extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaNota_C();
+		new TelaNota_C(sq);
 	}
 
 }

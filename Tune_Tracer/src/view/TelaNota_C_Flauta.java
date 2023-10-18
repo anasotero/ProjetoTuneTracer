@@ -13,14 +13,15 @@ import model.vo.FavoritosVO;
 @SuppressWarnings("serial")
 public class TelaNota_C_Flauta extends JFrame {
 
-	private ConexaoSQL sq;
+	private Connection sq;
 	Color CorFundo = new Color(255, 245, 239);
 	Color CorPanel = new Color(255, 145, 77);
 
 	Font fonte = new Font("Arial", Font.PLAIN, 26);
 
 	// adicionando as fotos
-	ImageIcon C = new ImageIcon("imagens/C_Flauta.jpeg");
+	ImageIcon CBeta = new ImageIcon("imagens/representacao.jpg");
+	ImageIcon C = new ImageIcon(CBeta.getImage().getScaledInstance(500, 250, Image.SCALE_DEFAULT));
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	ImageIcon favoritado = new ImageIcon("imagens/estrelaPreta.png");
 	ImageIcon favoritadoRE = new ImageIcon(favoritado.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
@@ -34,6 +35,7 @@ public class TelaNota_C_Flauta extends JFrame {
 	JLabel imagemC = new JLabel(C);
 	JLabel nota_C = new JLabel("C");
 	JLabel lblSom = new JLabel(som2);
+	
 
 	JPanel panel = new JPanel();
 
@@ -73,7 +75,7 @@ public class TelaNota_C_Flauta extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -81,7 +83,7 @@ public class TelaNota_C_Flauta extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -97,7 +99,7 @@ public class TelaNota_C_Flauta extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta();
+				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta(sq);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -117,10 +119,10 @@ public class TelaNota_C_Flauta extends JFrame {
 
 		// configurações da foto da nota
 		imagemC.setLayout(null);
-		imagemC.setBounds(157, 153, 438, 137);
+		imagemC.setBounds(60, 140, 639, 190);
 		getContentPane().add(imagemC);
 
-		// configurações da foto do ícone do som 
+		// configurações da foto do ícone do som
 		lblSom.setLayout(null);
 		lblSom.setBounds(660, 391, 40, 40);
 		getContentPane().add(lblSom);
@@ -167,7 +169,7 @@ public class TelaNota_C_Flauta extends JFrame {
 
 	private void favoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO FV = new FavoritosVO("C", "Flauta");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.favoritar(FV);
@@ -180,7 +182,7 @@ public class TelaNota_C_Flauta extends JFrame {
 
 	private void DesfavoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO si = new FavoritosVO("C", "Flauta");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.desfavoritar(si);

@@ -8,11 +8,11 @@ import java.sql.Connection; // Importe a classe Connection aqui
 
 public class RecuperarSenhaController {
     private RecuperarSenhaBO recuperarSenhaBO;
-    private Connection conexao; // Adicione uma referência à conexão aqui
+    private Connection conexao;
 
     public RecuperarSenhaController(Connection conexao) {
         this.conexao = conexao;
-        recuperarSenhaBO = new RecuperarSenhaBO(conexao); // Passe a conexão para o construtor de RecuperarSenhaBO
+        recuperarSenhaBO = new RecuperarSenhaBO(conexao);
     }
 
 	public boolean processarRecuperacaoSenha(String email, String palavraChave, String novaSenha) {

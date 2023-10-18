@@ -13,7 +13,7 @@ import model.vo.FavoritosVO;
 @SuppressWarnings("serial")
 public class TelaNota_D extends JFrame {
 
-	private ConexaoSQL sq;
+	private Connection sq;
 	Color CorFundo = new Color(255, 245, 239);
 	Color CorPanel = new Color(255, 145, 77);
 
@@ -69,7 +69,7 @@ public class TelaNota_D extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -77,7 +77,7 @@ public class TelaNota_D extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
+				Favoritadas TFA = new Favoritadas(sq);
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -93,7 +93,7 @@ public class TelaNota_D extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -102,7 +102,7 @@ public class TelaNota_D extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -161,7 +161,7 @@ public class TelaNota_D extends JFrame {
 
 	private void favoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO FV = new FavoritosVO("D", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.favoritar(FV);
@@ -174,7 +174,7 @@ public class TelaNota_D extends JFrame {
 
 	private void DesfavoritarNOTA() {
 
-		try (Connection conected = sq.getConect()) {
+		try (Connection conected = sq) {
 			FavoritosVO si = new FavoritosVO("C", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.desfavoritar(si);

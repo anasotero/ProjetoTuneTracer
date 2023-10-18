@@ -2,6 +2,8 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+
 import javax.swing.*;
 
 import controller.Metodos;
@@ -12,8 +14,12 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 
 	Color CorFundo = new Color(255, 245, 239);
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
+	private static Connection connect;
 
-	public TelaMatrizDasNotas_Flauta() {
+	public TelaMatrizDasNotas_Flauta(Connection connect) {
+		
+		this.connect = connect;
+		
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -290,7 +296,7 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 		notasFavoritas.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        Favoritadas TFA = new Favoritadas();
+		        Favoritadas TFA = new Favoritadas(connect);
 		        TFA.setVisible(true);
 		        dispose();
 		    }
@@ -305,7 +311,7 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 		retornar.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento();
+		    	TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento(connect);
 		        TDI2.setVisible(true);
 		        dispose();
 		    }
@@ -314,6 +320,6 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 	        
 
 	public static void main(String[] args) {
-		new TelaMatrizDasNotas_Flauta();
+		new TelaMatrizDasNotas_Flauta(connect);
 	}
 }
