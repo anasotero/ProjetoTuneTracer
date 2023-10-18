@@ -69,6 +69,21 @@ public class Favoritadas extends JFrame {
      		btnMenu.add(setting);
      		setVisible(true);
      		
+     		JMenuItem blog = new JMenuItem("Blogs de Música");
+    		blog.setForeground(new Color(255, 255, 255));
+    		blog.setBackground(new Color(255, 145, 77));
+    		btnMenu.add(blog);
+    		setVisible(true);
+    		
+    		blog.addActionListener(new ActionListener() {
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				TelaBlog TBL = new TelaBlog();
+    				TBL.setVisible(true);
+    				dispose();
+    			}
+    		});
+     		
      		JMenuItem retornar = new JMenuItem("Retornar");
      		retornar.setMnemonic('R');
      		retornar.setBackground(new Color(255, 255, 255));

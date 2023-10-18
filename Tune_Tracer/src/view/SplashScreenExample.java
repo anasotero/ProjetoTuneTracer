@@ -21,13 +21,6 @@ public class SplashScreenExample extends JFrame{
 	
 	public SplashScreenExample(){
 		
-		/*setTitle("Tune Tracer");
-		setResizable(false);
-		setFont(new Font("Arial", Font.PLAIN, 12));
-		setBounds(1080, 720, 780, 500);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
-		*/
 		}
 
 	public static void main(String[] args) {
