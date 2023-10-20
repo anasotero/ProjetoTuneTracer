@@ -34,13 +34,8 @@ public class TelaNota_C_Teclado extends JFrame {
 	JLabel nota_C = new JLabel("C");
 	JLabel lblSom = new JLabel(som2);
 	JPanel panel = new JPanel();
-	
-	private static Connection connect;
 
-	public TelaNota_C_Teclado(Connection connect) {
-		
-		this.connect = connect;
-		
+	public TelaNota_C_Teclado() {
 		// configurações da janela
 		setTitle("Tune Tracer");
 		setBounds(1080, 720, 780, 500);
@@ -76,7 +71,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas(connect);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -84,12 +79,27 @@ public class TelaNota_C_Teclado extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas(connect);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
 				dispose();
 			}
 		});
 
+		JMenuItem blog = new JMenuItem("Blogs de Música");
+		blog.setForeground(new Color(255, 255, 255));
+		blog.setBackground(new Color(255, 145, 77));
+		btnMenu.add(blog);
+		setVisible(true);
+		
+		blog.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaBlog TBL = new TelaBlog();
+				TBL.setVisible(true);
+				dispose();
+			}
+		});
+		
 		JMenuItem retornar = new JMenuItem("Retornar");
 		retornar.setMnemonic('R');
 		retornar.setBackground(new Color(255, 255, 255));
@@ -100,7 +110,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado(connect);
+				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado();
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -109,7 +119,7 @@ public class TelaNota_C_Teclado extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(connect);
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -204,7 +214,7 @@ public class TelaNota_C_Teclado extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaNota_C_Teclado(connect);
+		new TelaNota_C_Teclado();
 	}
 
 }

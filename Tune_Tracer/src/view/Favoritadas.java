@@ -18,12 +18,8 @@ public class Favoritadas extends JFrame {
 	private JTable tabela;
     private DefaultTableModel model;
     private JPanel contentPane;
-    private static Connection connect;
 
-    public Favoritadas(Connection connect) {
-    	
-    	this.connect = connect;
-    	
+    public Favoritadas() {
         setTitle("Tune Tracer");
         setResizable(false);
         setBounds(1080, 720, 780, 500);
@@ -73,6 +69,21 @@ public class Favoritadas extends JFrame {
      		btnMenu.add(setting);
      		setVisible(true);
      		
+     		JMenuItem blog = new JMenuItem("Blogs de Música");
+    		blog.setForeground(new Color(255, 255, 255));
+    		blog.setBackground(new Color(255, 145, 77));
+    		btnMenu.add(blog);
+    		setVisible(true);
+    		
+    		blog.addActionListener(new ActionListener() {
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				TelaBlog TBL = new TelaBlog();
+    				TBL.setVisible(true);
+    				dispose();
+    			}
+    		});
+     		
      		JMenuItem retornar = new JMenuItem("Retornar");
      		retornar.setMnemonic('R');
      		retornar.setBackground(new Color(255, 255, 255));
@@ -83,7 +94,7 @@ public class Favoritadas extends JFrame {
      		retornar.addActionListener(new ActionListener() {
      		    @Override
      		    public void actionPerformed(ActionEvent e) {
-     		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento(connect);
+     		        TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
      		        TDI.setVisible(true);
      		        dispose();
      		    }
@@ -93,7 +104,7 @@ public class Favoritadas extends JFrame {
     }
 
     private void carregarRegistrosDoBancoDeDados() {
-        String url = "jdbc:mysql://localhost:3306/tune_tracer";
+        String url = "jdbc:mysql://localhost:3306/tunetracer";
         String usuario = "root";
         String senha = "root";
 
@@ -128,7 +139,7 @@ public class Favoritadas extends JFrame {
 
     public static void main(String[] args) {
     	
-            new Favoritadas(connect);
+            new Favoritadas();
 
     }
 

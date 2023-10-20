@@ -12,7 +12,7 @@ import controller.Metodos;
 @SuppressWarnings("serial")
 public class TelaNota_C extends JFrame {
 
-	private static Connection sq;
+	private ConexaoSQL sq;
 
 	Color CorFundo = new Color(255, 245, 239);
 	Color CorPanel = new Color(255, 145, 77);
@@ -35,7 +35,7 @@ public class TelaNota_C extends JFrame {
 	JLabel lblSom = new JLabel(som2);
 	JPanel panel = new JPanel();
 
-	public TelaNota_C(Connection sq) {
+	public TelaNota_C() {
 		// configurações da janela
 		setTitle("Tune Tracer");
 		setBounds(1080, 720, 780, 500);
@@ -71,7 +71,7 @@ public class TelaNota_C extends JFrame {
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas(sq);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -79,8 +79,23 @@ public class TelaNota_C extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas(sq);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
+				dispose();
+			}
+		});
+		
+		JMenuItem blog = new JMenuItem("Blogs de Música");
+		blog.setForeground(new Color(255, 255, 255));
+		blog.setBackground(new Color(255, 145, 77));
+		btnMenu.add(blog);
+		setVisible(true);
+		
+		blog.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaBlog TBL = new TelaBlog();
+				TBL.setVisible(true);
 				dispose();
 			}
 		});
@@ -95,7 +110,7 @@ public class TelaNota_C extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -104,7 +119,7 @@ public class TelaNota_C extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(sq);
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
 				TCDN.setVisible(true);
 				dispose();
 			}
@@ -174,7 +189,7 @@ public class TelaNota_C extends JFrame {
 
 	private void favoritarNOTA() {
 
-		try (Connection conected = sq) {
+		try (Connection conected = sq.getConect()) {
 			FavoritosVO FV = new FavoritosVO("C", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.favoritar(FV);
@@ -187,7 +202,7 @@ public class TelaNota_C extends JFrame {
 
 	private void DesfavoritarNOTA() {
 
-		try (Connection conected = sq) {
+		try (Connection conected = sq.getConect()) {
 			FavoritosVO si = new FavoritosVO("C", "Violão");
 			FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
 			FID.desfavoritar(si);
@@ -199,7 +214,7 @@ public class TelaNota_C extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaNota_C(sq);
+		new TelaNota_C();
 	}
 
 }

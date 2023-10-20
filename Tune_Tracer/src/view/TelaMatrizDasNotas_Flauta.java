@@ -2,8 +2,6 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-
 import javax.swing.*;
 
 import controller.Metodos;
@@ -14,12 +12,8 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 
 	Color CorFundo = new Color(255, 245, 239);
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
-	private static Connection connect;
 
-	public TelaMatrizDasNotas_Flauta(Connection connect) {
-		
-		this.connect = connect;
-		
+	public TelaMatrizDasNotas_Flauta() {
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -296,10 +290,25 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 		notasFavoritas.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        Favoritadas TFA = new Favoritadas(connect);
+		        Favoritadas TFA = new Favoritadas();
 		        TFA.setVisible(true);
 		        dispose();
 		    }
+		});
+		
+		JMenuItem blog = new JMenuItem("Blogs de Música");
+		blog.setForeground(new Color(255, 255, 255));
+		blog.setBackground(new Color(255, 145, 77));
+		btnMenu.add(blog);
+		setVisible(true);
+		
+		blog.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaBlog TBL = new TelaBlog();
+				TBL.setVisible(true);
+				dispose();
+			}
 		});
 		
 		JMenuItem retornar = new JMenuItem("Retornar");
@@ -311,7 +320,7 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 		retornar.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento(connect);
+		    	TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento();
 		        TDI2.setVisible(true);
 		        dispose();
 		    }
@@ -320,6 +329,6 @@ public class TelaMatrizDasNotas_Flauta extends JFrame{
 	        
 
 	public static void main(String[] args) {
-		new TelaMatrizDasNotas_Flauta(connect);
+		new TelaMatrizDasNotas_Flauta();
 	}
 }

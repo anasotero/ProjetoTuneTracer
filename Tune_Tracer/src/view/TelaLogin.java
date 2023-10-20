@@ -130,21 +130,6 @@ public class TelaLogin extends JFrame {
 		CbMostrarSenha.setBounds(61, 282, 122, 22);
 		panel_1.add(CbMostrarSenha);
 		
-		JButton btnRecuperarSenha = new JButton("Esqueci a senha");
-		btnRecuperarSenha.setBackground(Color.WHITE);
-		btnRecuperarSenha.setForeground(new Color(30, 144, 255));
-		btnRecuperarSenha.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnRecuperarSenha.setBounds(180, 278, 126, 27);
-		panel_1.add(btnRecuperarSenha);
-		btnRecuperarSenha.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        // Crie uma instância da classe RecuperarSenha e passe a conexão como argumento
-		        RecuperarSenha recuperarSenhaFrame = new RecuperarSenha(sq.getConect());
-		        recuperarSenhaFrame.setVisible(true);
-		        dispose();
-		    }
-		});
-		
 		// evento da checkbox de mostrar senha
 		
 		CbMostrarSenha.addActionListener(new ActionListener() {
@@ -176,6 +161,7 @@ public class TelaLogin extends JFrame {
 	                "Erro ", JOptionPane.ERROR_MESSAGE);
 	    }
 	}
+	
 }
 
 

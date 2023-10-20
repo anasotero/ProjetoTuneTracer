@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-
 import controller.Metodos;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,10 +15,8 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JPanel contentpane;
 	private JPanel panel_1, panel_2;
 	private JLabel lblViolao, lblTeclado, lblFlauta;
-	private static Connection connect;
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
-	
 	ImageIcon imagemGuitarNR = new ImageIcon("imagens/violão.png");
 	ImageIcon imagemGuitar = new ImageIcon(imagemGuitarNR.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	ImageIcon imagemTecladoNR = new ImageIcon("imagens/teclado.png");
@@ -29,10 +25,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	ImageIcon imagemFlauta = new ImageIcon(imagemFlautaNR.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT));
 
 	
-	public TelaEscolhaDeInstrumento(Connection connect) {
-		
-		this.connect = connect;
-		
+	public TelaEscolhaDeInstrumento() {
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -91,7 +84,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas(connect);
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.guitarSound();
@@ -108,7 +101,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado(connect);
+				TelaMatrizDasNotas_Teclado TCDN = new TelaMatrizDasNotas_Teclado();
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.keyboardSound();
@@ -125,7 +118,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta(connect);
+				TelaMatrizDasNotas_Flauta TCDN = new TelaMatrizDasNotas_Flauta();
 				TCDN.setVisible(true);
 				dispose();
 				Metodos.fluteSound();
@@ -142,6 +135,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TelaEscolhaDeInstrumento(connect);
+		new TelaEscolhaDeInstrumento();
 	}
 }

@@ -31,7 +31,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(null, "LOGIN FEITO");
                 
                     
-    				TelaEscolhaDeInstrumento tei = new TelaEscolhaDeInstrumento(sq.getConect());
+    				TelaEscolhaDeInstrumento tei = new TelaEscolhaDeInstrumento();
     				tei.setVisible(true);
                 
             } else {

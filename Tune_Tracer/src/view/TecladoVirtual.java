@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,11 +30,8 @@ public class TecladoVirtual extends JFrame {
 	private JLabel lblTeclado = new JLabel(teclado);
 	private JLabel lblTecladoC = new JLabel(tecladoC);
 	private Color fundo = new Color(255, 192, 131);
-	private static Connection connect;
 
-	public TecladoVirtual(Connection connect) {
-		
-		this.connect = connect;
+	public TecladoVirtual() {
 
 		setTitle("Tune Tracer");
 		setResizable(false);
@@ -96,7 +91,7 @@ public class TecladoVirtual extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas(connect);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -111,7 +106,7 @@ public class TecladoVirtual extends JFrame {
 		blog.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaBlog TBL = new TelaBlog(connect);
+				TelaBlog TBL = new TelaBlog();
 				TBL.setVisible(true);
 				dispose();
 			}
@@ -126,7 +121,7 @@ public class TecladoVirtual extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento(connect);
+				TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento();
 				TDI2.setVisible(true);
 				dispose();
 			}
@@ -137,6 +132,6 @@ public class TecladoVirtual extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new TecladoVirtual(connect);
+		new TecladoVirtual();
 	}
 }

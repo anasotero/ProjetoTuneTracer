@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 public class TelaBlog extends JFrame {
 
@@ -13,14 +12,11 @@ public class TelaBlog extends JFrame {
 	private Color CorFundo = new Color(255, 245, 239);
 	private Color CorPanel = new Color(255, 145, 77);
 	private Color CorLaranja = new Color(255,192,131);
-	private static Connection connect;
 
-	public TelaBlog(Connection connect) {
-		
-		this.connect = connect;
+	public TelaBlog() {
 
 		// Configurações da janela principal
-		setTitle("Tune Tracer");
+		setTitle("Tela do Blog");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(780, 500);
 		setResizable(false);
@@ -236,7 +232,7 @@ public class TelaBlog extends JFrame {
 		notasFavoritas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas(connect);
+				Favoritadas TFA = new Favoritadas();
 				TFA.setVisible(true);
 				dispose();
 			}
@@ -251,7 +247,7 @@ public class TelaBlog extends JFrame {
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento(connect);
+				TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento();
 				TDI2.setVisible(true);
 				dispose();
 			}
@@ -268,6 +264,6 @@ public class TelaBlog extends JFrame {
 	public static void main(String[] args) {
 		// Garante que o código Swing seja executado na thread de despacho de eventos
 		// (Event Dispatch Thread)
-		SwingUtilities.invokeLater(() -> new TelaBlog(connect));
+		SwingUtilities.invokeLater(() -> new TelaBlog());
 	}
 }
