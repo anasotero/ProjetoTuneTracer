@@ -5,7 +5,13 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+
 import controller.Metodos;
+import model.dao.ConexaoSQL;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -15,6 +21,9 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JPanel contentpane;
 	private JPanel panel_1, panel_2;
 	private JLabel lblViolao, lblTeclado, lblFlauta;
+	
+	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
+	Connection conexao = conexaoSQL.getConect(); 
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	ImageIcon imagemGuitarNR = new ImageIcon("imagens/violão.png");
@@ -32,6 +41,108 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		setBounds(1080, 720, 780, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(ocarina.getImage());
+		
+		// configuração do menu
+
+				JMenuBar barra = new JMenuBar();
+				barra.setBackground(new Color(255, 145, 77));
+				setJMenuBar(barra);
+
+				JMenu btnMenu = new JMenu("Menu");
+				btnMenu.setForeground(new Color(255, 255, 255));
+				barra.add(btnMenu);
+
+				JMenuItem setting = new JMenuItem("Configurações");
+				setting.setBackground(new Color(255, 145, 77));
+				setting.setForeground(new Color(255, 255, 255));
+				btnMenu.add(setting);
+				setVisible(true);
+				setting.addActionListener(new ActionListener() {
+	     		    @Override
+	     		    public void actionPerformed(ActionEvent e) {
+	     		        ConfigSis CO = new ConfigSis(conexao);
+	     		        CO.setVisible(true);
+	     		        dispose();
+	     		    }
+	     		});
+
+				JMenuItem notasFavoritas = new JMenuItem("Favoritadas");
+				notasFavoritas.setForeground(new Color(255, 255, 255));
+				notasFavoritas.setBackground(new Color(255, 145, 77));
+				btnMenu.add(notasFavoritas);
+				setVisible(true);
+
+				notasFavoritas.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Favoritadas TFA = new Favoritadas();
+						TFA.setVisible(true);
+						dispose();
+					}
+				});
+				notasFavoritas.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Favoritadas TFA = new Favoritadas();
+						TFA.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem blog = new JMenuItem("Blogs de Música");
+				blog.setForeground(new Color(255, 255, 255));
+				blog.setBackground(new Color(255, 145, 77));
+				btnMenu.add(blog);
+				setVisible(true);
+				
+				blog.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaBlog TBL = new TelaBlog();
+						TBL.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem TV = new JMenuItem("Teclado Virtual");
+				TV.setForeground(new Color(255, 255, 255));
+				TV.setBackground(new Color(255, 145, 77));
+				btnMenu.add(TV);
+				setVisible(true);
+				
+				TV.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TecladoVirtual tvc = new TecladoVirtual();
+						tvc.setVisible(true);
+						dispose();
+					}
+				});
+
+				JMenuItem retornar = new JMenuItem("Retornar");
+				retornar.setMnemonic('R');
+				retornar.setBackground(new Color(255, 255, 255));
+				retornar.setForeground(new Color(255, 128, 0));
+				btnMenu.add(retornar);
+				setVisible(true);
+
+				retornar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+						TCDN.setVisible(true);
+						dispose();
+					}
+				});
+
+				retornar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+						TCDN.setVisible(true);
+						dispose();
+					}
+				});
 
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));

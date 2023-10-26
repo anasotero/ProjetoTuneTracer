@@ -20,7 +20,7 @@ public class CadastroDAO {
         	c.getPalavra_chave() == null || c.getPalavra_chave().isEmpty() ||
             c.getNome().isEmpty() || c.getEmail().isEmpty() || c.getSenha().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo não preenchido");
-            return; // Não continua com a inserção se algum campo estiver vazio
+            return; 
         }
         
         try (PreparedStatement st = conexao.prepareStatement(sql)) {

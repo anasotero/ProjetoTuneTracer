@@ -5,11 +5,22 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
+import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
+import model.dao.ConexaoSQL;
+import model.dao.FavoritosInsertDAO;
+import model.vo.FavoritosVO;
+
+import java.awt.Component;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Metodos {
 
     private static Clip tap;
+    static ConexaoSQL sq = new ConexaoSQL();
+	static CadastroController cadastroCon = new CadastroController(sq);
 
     public static void guitarSound() {
         try {
@@ -34,7 +45,7 @@ public class Metodos {
     
     public static void keyboardSound() {
         try {
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/keyboard.wav"));
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/pianinho.wav"));
             tap = AudioSystem.getClip();
 
             tap.addLineListener(new LineListener() {
@@ -178,6 +189,262 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
+    
+    public static void C() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/C.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void CS() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/CS.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void D() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/D.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void DS() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/DS.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void E() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/E.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void F() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/F.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void FS() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/FS.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void G() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/G.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void GS() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/GS.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void A() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/A.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void AS() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/AS.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void B() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/B.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+
+
   
     
     
