@@ -42,6 +42,47 @@ public class RecuperarSenha extends JFrame {
 		setIconImage(ocarina.getImage());
 		getContentPane().setBackground(fundo);
 		getContentPane().setLayout(null);
+		
+		// configuração do menu
+
+		JMenuBar barra = new JMenuBar();
+		barra.setBackground(new Color(255, 145, 77));
+		setJMenuBar(barra);
+
+		JMenu btnMenu = new JMenu("Menu");
+		btnMenu.setForeground(new Color(255, 255, 255));
+		barra.add(btnMenu);
+
+		JMenuItem setting = new JMenuItem("Configurações");
+		setting.setBackground(new Color(255, 145, 77));
+		setting.setForeground(new Color(255, 255, 255));
+		btnMenu.add(setting);
+		setVisible(true);
+
+		setting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConfigSis CO = new ConfigSis(conexao);
+				CO.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setMnemonic('R');
+		retornar.setBackground(new Color(255, 255, 255));
+		retornar.setForeground(new Color(255, 128, 0));
+		btnMenu.add(retornar);
+		setVisible(true);
+
+		retornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+				TDI.setVisible(true);
+				dispose();
+			}
+		});
 
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));

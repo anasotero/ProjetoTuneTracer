@@ -7,18 +7,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import controller.Metodos;
+import model.dao.ConexaoSQL;
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 public class TecladoVirtual extends JFrame {
+	
+	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
+	Connection conexao = conexaoSQL.getConect(); 
 
 	private ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	private ImageIcon tecladoNR = new ImageIcon("imagens/teclado padrão.png");
@@ -43,17 +49,147 @@ public class TecladoVirtual extends JFrame {
 		getContentPane().setLayout(null);
 
 		JPanel teclaC = new JPanel();
-		teclaC.setBackground(new Color(0, 128, 0));
+		teclaC.setBackground(new Color(255, 255, 255));
 		teclaC.setVisible(true);
 		teclaC.setBounds(74, 285, 70, 109);
 		getContentPane().add(teclaC);
 		teclaC.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
-		    	
-		        lblTeclado.setVisible(false);
-		        lblTecladoC.setVisible(true);
-		        
+		        Metodos.C();
+		    }
+		});
+		
+		JPanel teclaCS = new JPanel();
+		teclaCS.setBackground(new Color(0, 0, 0));
+		teclaCS.setVisible(true);
+		teclaCS.setBounds(136, 118, 59, 150);
+		getContentPane().add(teclaCS);
+		teclaCS.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.CS();
+		    }
+		});
+		
+		JPanel teclaD = new JPanel();
+		teclaD.setBackground(new Color(255, 255, 255));
+		teclaD.setVisible(true);
+		teclaD.setBounds(175, 285, 70, 109);
+		getContentPane().add(teclaD);
+		teclaD.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.D();
+		    }
+		});
+		
+		JPanel teclaDS = new JPanel();
+		teclaDS.setBackground(new Color(0, 0, 0));
+		teclaDS.setVisible(true);
+		teclaDS.setBounds(226, 118, 59, 150);
+		getContentPane().add(teclaDS);
+		teclaDS.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.DS();
+		    }
+		});
+		
+		JPanel teclaE = new JPanel();
+		teclaE.setBackground(new Color(255, 255, 255));
+		teclaE.setVisible(true);
+		teclaE.setBounds(267, 285, 70, 109);
+		getContentPane().add(teclaE);
+		teclaE.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.E();
+		    }
+		});
+		
+		JPanel teclaF = new JPanel();
+		teclaF.setBackground(new Color(255, 255, 255));
+		teclaF.setVisible(true);
+		teclaF.setBounds(355, 285, 70, 109);
+		getContentPane().add(teclaF);
+		teclaF.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.F();
+		    }
+		});
+		
+		JPanel teclaFS = new JPanel();
+		teclaFS.setBackground(new Color(0, 0, 0));
+		teclaFS.setVisible(true);
+		teclaFS.setBounds(398, 118, 59, 150);
+		getContentPane().add(teclaFS);
+		teclaFS.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.FS();
+		    }
+		});
+		
+		JPanel teclaG = new JPanel();
+		teclaG.setBackground(new Color(255, 255, 255));
+		teclaG.setVisible(true);
+		teclaG.setBounds(438, 285, 70, 109);
+		getContentPane().add(teclaG);
+		teclaG.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.G();
+		    }
+		});
+		
+		JPanel teclaGS = new JPanel();
+		teclaGS.setBackground(new Color(0, 0, 0));
+		teclaGS.setVisible(true);
+		teclaGS.setBounds(486, 118, 59, 150);
+		getContentPane().add(teclaGS);
+		teclaGS.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.GS();
+		    }
+		});
+		
+		JPanel teclaA = new JPanel();
+		teclaA.setBackground(new Color(255, 255, 255));
+		teclaA.setVisible(true);
+		teclaA.setBounds(525, 285, 70, 109);
+		getContentPane().add(teclaA);
+		teclaA.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.A();
+		    }
+		});
+		
+		JPanel teclaAS = new JPanel();
+		teclaAS.setBackground(new Color(0, 0, 0));
+		teclaAS.setVisible(true);
+		teclaAS.setBounds(570, 118, 59, 150);
+		getContentPane().add(teclaAS);
+		teclaAS.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.AS();
+		    }
+		});
+		
+		JPanel teclaB = new JPanel();
+		teclaB.setBackground(new Color(255, 255, 255
+				));
+		teclaB.setVisible(true);
+		teclaB.setBounds(615, 285, 70, 109);
+		getContentPane().add(teclaB);
+		teclaB.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        Metodos.B();
 		    }
 		});
 		
@@ -67,7 +203,8 @@ public class TecladoVirtual extends JFrame {
 		lblTecladoC.setBounds(0, 0, 766, 441);
 		getContentPane().add(lblTecladoC);
 
-		// configurações do JMenu
+		// configuração do menu
+
 		JMenuBar barra = new JMenuBar();
 		barra.setBackground(new Color(255, 145, 77));
 		setJMenuBar(barra);
@@ -82,47 +219,27 @@ public class TecladoVirtual extends JFrame {
 		btnMenu.add(setting);
 		setVisible(true);
 
-		JMenuItem notasFavoritas = new JMenuItem("Favoritadas");
-		notasFavoritas.setForeground(new Color(255, 255, 255));
-		notasFavoritas.setBackground(new Color(255, 145, 77));
-		btnMenu.add(notasFavoritas);
-		setVisible(true);
-
-		notasFavoritas.addActionListener(new ActionListener() {
+		setting.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
-				TFA.setVisible(true);
+				ConfigSis CO = new ConfigSis(conexao);
+				CO.setVisible(true);
 				dispose();
 			}
 		});
 
-		JMenuItem blog = new JMenuItem("Blogs de Música");
-		blog.setForeground(new Color(255, 255, 255));
-		blog.setBackground(new Color(255, 145, 77));
-		btnMenu.add(blog);
-		setVisible(true);
-		
-		blog.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TelaBlog TBL = new TelaBlog();
-				TBL.setVisible(true);
-				dispose();
-			}
-		});
-		
 		JMenuItem retornar = new JMenuItem("Retornar");
 		retornar.setMnemonic('R');
 		retornar.setBackground(new Color(255, 255, 255));
 		retornar.setForeground(new Color(255, 128, 0));
 		btnMenu.add(retornar);
 		setVisible(true);
+
 		retornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaEscolhaDeInstrumento TDI2 = new TelaEscolhaDeInstrumento();
-				TDI2.setVisible(true);
+				TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+				TDI.setVisible(true);
 				dispose();
 			}
 		});

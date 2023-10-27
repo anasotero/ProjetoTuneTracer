@@ -11,6 +11,9 @@ import controller.Metodos;
 
 @SuppressWarnings("serial")
 public class TelaNota_C extends JFrame {
+	
+	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
+	Connection conexao = conexaoSQL.getConect();
 
 	private ConexaoSQL sq;
 
@@ -48,82 +51,44 @@ public class TelaNota_C extends JFrame {
 
 		// configuração do menu
 
-		JMenuBar barra = new JMenuBar();
-		barra.setBackground(new Color(255, 145, 77));
-		setJMenuBar(barra);
+				JMenuBar barra = new JMenuBar();
+				barra.setBackground(new Color(255, 145, 77));
+				setJMenuBar(barra);
 
-		JMenu btnMenu = new JMenu("Menu");
-		btnMenu.setForeground(new Color(255, 255, 255));
-		barra.add(btnMenu);
+				JMenu btnMenu = new JMenu("Menu");
+				btnMenu.setForeground(new Color(255, 255, 255));
+				barra.add(btnMenu);
 
-		JMenuItem setting = new JMenuItem("Configurações");
-		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
-		btnMenu.add(setting);
-		setVisible(true);
+				JMenuItem setting = new JMenuItem("Configurações");
+				setting.setBackground(new Color(255, 145, 77));
+				setting.setForeground(new Color(255, 255, 255));
+				btnMenu.add(setting);
+				setVisible(true);
 
-		JMenuItem notasFavoritas = new JMenuItem("Favoritadas");
-		notasFavoritas.setForeground(new Color(255, 255, 255));
-		notasFavoritas.setBackground(new Color(255, 145, 77));
-		btnMenu.add(notasFavoritas);
-		setVisible(true);
+				setting.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						ConfigSis CO = new ConfigSis(conexao);
+						CO.setVisible(true);
+						dispose();
+					}
+				});
 
-		notasFavoritas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Favoritadas TFA = new Favoritadas();
-				TFA.setVisible(true);
-				dispose();
-			}
-		});
-		notasFavoritas.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Favoritadas TFA = new Favoritadas();
-				TFA.setVisible(true);
-				dispose();
-			}
-		});
-		
-		JMenuItem blog = new JMenuItem("Blogs de Música");
-		blog.setForeground(new Color(255, 255, 255));
-		blog.setBackground(new Color(255, 145, 77));
-		btnMenu.add(blog);
-		setVisible(true);
-		
-		blog.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TelaBlog TBL = new TelaBlog();
-				TBL.setVisible(true);
-				dispose();
-			}
-		});
+				JMenuItem retornar = new JMenuItem("Retornar");
+				retornar.setMnemonic('R');
+				retornar.setBackground(new Color(255, 255, 255));
+				retornar.setForeground(new Color(255, 128, 0));
+				btnMenu.add(retornar);
+				setVisible(true);
 
-		JMenuItem retornar = new JMenuItem("Retornar");
-		retornar.setMnemonic('R');
-		retornar.setBackground(new Color(255, 255, 255));
-		retornar.setForeground(new Color(255, 128, 0));
-		btnMenu.add(retornar);
-		setVisible(true);
-
-		retornar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
-				TCDN.setVisible(true);
-				dispose();
-			}
-		});
-
-		retornar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
-				TCDN.setVisible(true);
-				dispose();
-			}
-		});
+				retornar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+						TDI.setVisible(true);
+						dispose();
+					}
+				});
 		// configurações do panel
 		panel.setBounds(298, 35, 177, 56);
 		getContentPane().add(panel);
