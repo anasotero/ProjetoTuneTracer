@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import controller.CadastroController;
 import controller.LoginController;
+import controller.Metodos;
 import model.dao.ConexaoSQL;
 
 @SuppressWarnings("serial")
@@ -25,19 +26,18 @@ public class TelaLogin extends JFrame {
 	ImageIcon fundo = new ImageIcon("imagens/TuneTracer_background.png");
 	ImageIcon icon = new ImageIcon(fundo.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
-	
+
 	// construindo a janela
-	public TelaLogin(LoginController logcon, ConexaoSQL sq)  {
+	public TelaLogin(LoginController logcon, ConexaoSQL sq) {
 		this.sq = sq;
 		this.logcon = new LoginController(sq);
-		
+
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
 		setBounds(1080, 720, 780, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(ocarina.getImage());
-	
 
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
@@ -98,7 +98,7 @@ public class TelaLogin extends JFrame {
 				Logar();
 				dispose();
 			}
-			
+
 		});
 
 		JLabel lblConta = new JLabel("Não tem uma conta?");
@@ -115,12 +115,12 @@ public class TelaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					TelaCadastro TC = new TelaCadastro(cadascon, sq);
-					TC.setVisible(true);
-					dispose();
-				
+				TelaCadastro TC = new TelaCadastro(cadascon, sq);
+				TC.setVisible(true);
+				dispose();
+
 			}
-			
+
 		});
 		panel_1.add(lblCadastro);
 
@@ -129,15 +129,39 @@ public class TelaLogin extends JFrame {
 		CbMostrarSenha.setBackground(new Color(255, 255, 255));
 		CbMostrarSenha.setBounds(61, 282, 122, 22);
 		panel_1.add(CbMostrarSenha);
-		
+
 		// evento da checkbox de mostrar senha
-		
+
 		CbMostrarSenha.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JCheckBox cb = (JCheckBox) e.getSource();
-                passwordField.setEchoChar(cb.isSelected() ? '\0' : '*');
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				JCheckBox cb = (JCheckBox) e.getSource();
+				passwordField.setEchoChar(cb.isSelected() ? '\0' : '*');
+			}
+		});
+
+		JCheckBox cbManterSessao = new JCheckBox("Manter sessão");
+		cbManterSessao.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		cbManterSessao.setBackground(Color.WHITE);
+		cbManterSessao.setBounds(213, 283, 93, 21);
+		panel_1.add(cbManterSessao);
+
+		cbManterSessao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cbManterSessao.isSelected() == true)
+					try {
+						Metodos.manterSessaoAtivado(sq.getConect());
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				else {
+					try {
+						Metodos.manterSessaoDesativado(sq.getConect());
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 
 		JLabel TuneTracer = new JLabel(icon);
 		TuneTracer.setLabelFor(contentpane);
@@ -148,23 +172,16 @@ public class TelaLogin extends JFrame {
 		setVisible(true);
 
 	}
-	
+
 	private void Logar() {
-	    String email = EmailTextField.getText();
-	    String senha = new String(passwordField.getPassword());
+		String email = EmailTextField.getText();
+		String senha = new String(passwordField.getPassword());
 
-	    try (Connection connected = sq.getConect()) {
-	        logcon.Logar(email, senha); // Chamar o método Logar no LoginController
-	        // Resto do código...
-	    } catch (SQLException e) {
-	        JOptionPane.showMessageDialog(this, "Erro no login " + e.getMessage(),
-	                "Erro ", JOptionPane.ERROR_MESSAGE);
-	    }
+		try (Connection connected = sq.getConect()) {
+			logcon.Logar(email, senha); // Chamar o método Logar no LoginController
+			// Resto do código...
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(this, "Erro no login " + e.getMessage(), "Erro ", JOptionPane.ERROR_MESSAGE);
+		}
 	}
-	
 }
-
-
-
-
-

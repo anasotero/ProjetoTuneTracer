@@ -10,17 +10,40 @@ import javax.swing.JOptionPane;
 import model.dao.ConexaoSQL;
 import model.dao.FavoritosInsertDAO;
 import model.vo.FavoritosVO;
-
 import java.awt.Component;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Metodos {
 
     private static Clip tap;
     static ConexaoSQL sq = new ConexaoSQL();
-	static CadastroController cadastroCon = new CadastroController(sq);
+    static CadastroController cadastroCon = new CadastroController(sq);
+
+    public static void FavoritarNota(String nota, String instrumento) {
+        try (Connection conected = sq.getConect()) {
+            FavoritosVO FV = new FavoritosVO(nota, instrumento);
+            FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
+            FID.favoritar(FV);
+
+        } catch (SQLException e) {
+            System.err.println("Erro em favoritar nota " + e.getMessage() + "Erro");
+        }
+
+    }
+
+    public static void Desfavoritar(String nota, String instrumento) {
+        try (Connection conected = sq.getConect()) {
+            FavoritosVO si = new FavoritosVO(nota, instrumento);
+            FavoritosInsertDAO FID = new FavoritosInsertDAO(conected);
+            FID.desfavoritar(si);
+
+        } catch (SQLException e) {
+            System.err.println("Erro em Desfavoritar nota " + e.getMessage() + "Erro");
+        }
+    }
 
     public static void guitarSound() {
         try {
@@ -42,7 +65,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void keyboardSound() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/pianinho.wav"));
@@ -63,7 +86,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void fluteSound() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/flute.wav"));
@@ -84,7 +107,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void clickedSound() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/clicked.wav"));
@@ -105,7 +128,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void favoritadoSound() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/favoritado.wav"));
@@ -126,7 +149,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void som_C_Flauta() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/c_flauta.wav"));
@@ -147,7 +170,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void som_C_Piano() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/c_piano.wav"));
@@ -168,7 +191,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void som_C_Violao() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/c_violao.wav"));
@@ -189,7 +212,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void C() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/C.wav"));
@@ -210,7 +233,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void CS() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/CS.wav"));
@@ -231,7 +254,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void D() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/D.wav"));
@@ -252,7 +275,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void DS() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/DS.wav"));
@@ -273,7 +296,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void E() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/E.wav"));
@@ -294,7 +317,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void F() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/F.wav"));
@@ -315,7 +338,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void FS() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/FS.wav"));
@@ -336,7 +359,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void G() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/G.wav"));
@@ -357,7 +380,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void GS() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/GS.wav"));
@@ -378,7 +401,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void A() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/A.wav"));
@@ -399,7 +422,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void AS() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/AS.wav"));
@@ -420,7 +443,7 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public static void B() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/B.wav"));
@@ -441,13 +464,29 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
-    
-    
 
+    public static boolean manterSessaoAtivado(Connection conect) throws SQLException {
+        String sql = "UPDATE manterSessão SET verificador = 1 WHERE id = 1";
 
-  
-    
-    
-    
+        try (PreparedStatement st = conect.prepareStatement(sql)) {
+            int rowsUpdated = st.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public static boolean manterSessaoDesativado(Connection conect) throws SQLException {
+        String sql = "UPDATE manterSessão SET verificador = 0 WHERE id = 1";
+
+        try (PreparedStatement st = conect.prepareStatement(sql)) {
+            int rowsUpdated = st.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
 }
-
