@@ -118,6 +118,21 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+				
+				JMenuItem Musicas = new JMenuItem("Músicas de Exemplo");
+				Musicas.setForeground(new Color(255, 255, 255));
+				Musicas.setBackground(new Color(255, 145, 77));
+				btnMenu.add(Musicas);
+				setVisible(true);
+				
+				Musicas.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicasDeExemplo ME = new MusicasDeExemplo();
+						ME.setVisible(true);
+						dispose();
+					}
+				});
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');
@@ -143,6 +158,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+				
 
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));

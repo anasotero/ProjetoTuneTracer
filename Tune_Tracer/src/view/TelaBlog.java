@@ -41,7 +41,15 @@ public class TelaBlog extends JFrame {
 		CifraIns.setBackground(CorFundo);
 		
 		// Crie um JTextArea (ou qualquer outro componente que você queira)
-		JTextArea textArea = new JTextArea(25,53);
+		JTextArea textArea = new JTextArea(30,30);
+		
+		// Adiciona o JTextArea a um JScrollPane
+				JScrollPane scrollPane = new JScrollPane(textArea);
+				scrollPane.setBounds(31, 5, 573, 406);
+				scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				// Adiciona o JScrollPane ao JPanel
+				CifraIns.add(scrollPane);
+		
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textArea.append("\t              CIFRAS DOS INSTRUMENTOS "
 				+ "\n\n são uma notação simplificada usada por músicos,"
@@ -69,12 +77,7 @@ public class TelaBlog extends JFrame {
 		CifraIns.setLayout(null);
 		textArea.setEditable(false); // para tornar o JTextArea somente leitura
 		
-		// Adiciona o JTextArea a um JScrollPane
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setBounds(31, 5, 573, 406);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		// Adiciona o JScrollPane ao JPanel
-		CifraIns.add(scrollPane);
+
 
 		
 		// configurações do painel 2
@@ -265,8 +268,6 @@ public class TelaBlog extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		// Garante que o código Swing seja executado na thread de despacho de eventos
-		// (Event Dispatch Thread)
 		SwingUtilities.invokeLater(() -> new TelaBlog());
 	}
 }
