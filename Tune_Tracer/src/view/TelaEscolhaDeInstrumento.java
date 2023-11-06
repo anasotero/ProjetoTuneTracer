@@ -139,6 +139,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+<<<<<<< HEAD
 				
 				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
 				MusicaFundo.setForeground(new Color(255, 255, 255));
@@ -154,6 +155,8 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+=======
+>>>>>>> 56a682ac4de501ac07a836df713f630aae5741a2
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');
