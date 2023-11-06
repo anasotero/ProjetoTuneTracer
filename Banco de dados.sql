@@ -25,6 +25,10 @@ verificador INT,
 PRIMARY KEY (id)
 );
 
+UPDATE manterSessão
+SET verificador = 0
+WHERE id = 1;
+
 INSERT INTO manterSessão (nomesessao, nomeusuario, verificador)
 VALUES (null, null, 0);
 

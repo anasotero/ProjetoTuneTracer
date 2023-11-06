@@ -7,10 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 
 import controller.Metodos;
 import model.dao.ConexaoSQL;
+import view.MusicChooser;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,6 +25,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JPanel contentpane;
 	private JPanel panel_1, panel_2;
 	private JLabel lblViolao, lblTeclado, lblFlauta;
+	private JLabel Sair;
 	
 	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
 	Connection conexao = conexaoSQL.getConect(); 
@@ -32,7 +37,8 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	ImageIcon imagemTeclado = new ImageIcon(imagemTecladoNR.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	ImageIcon imagemFlautaNR = new ImageIcon("imagens/flauta.png");
 	ImageIcon imagemFlauta = new ImageIcon(imagemFlautaNR.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT));
-
+	ImageIcon imagemSair = new ImageIcon("imagens/sair.png");
+	ImageIcon sair = new ImageIcon(imagemSair.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	
 	public TelaEscolhaDeInstrumento() {
 		setTitle("Tune Tracer");
@@ -118,6 +124,36 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+				
+				JMenuItem Musicas = new JMenuItem("Músicas de Exemplo");
+				Musicas.setForeground(new Color(255, 255, 255));
+				Musicas.setBackground(new Color(255, 145, 77));
+				btnMenu.add(Musicas);
+				setVisible(true);
+				
+				Musicas.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicasDeExemplo ME = new MusicasDeExemplo();
+						ME.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
+				MusicaFundo.setForeground(new Color(255, 255, 255));
+				MusicaFundo.setBackground(new Color(255, 145, 77));
+				btnMenu.add(MusicaFundo);
+				setVisible(true);
+				
+				MusicaFundo.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicChooser MC = new MusicChooser();
+						MC.setVisible(true);
+						dispose();
+					}
+				});
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');
@@ -143,6 +179,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+				
 
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
@@ -179,6 +216,9 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		panel.add(flauta);
 		flauta.setLabelFor(contentpane);
 		contentpane.setComponentZOrder(flauta, 0);
+		
+		JLabel Sair = new JLabel(sair);
+		
 
 		panel_2 = new JPanel();
 		panel_2.setLayout(null);
@@ -240,12 +280,43 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		contentpane.add(btnViolao);
 		contentpane.add(btnTeclado);
 		contentpane.add(btnFlauta);
+		
+		MusicPlayer musicPlayer = MusicPlayer.getInstance();
+		String selectedMusicPath = loadSelectedMusicPath();
+		
+		if (selectedMusicPath != null) {
+            musicPlayer.play(selectedMusicPath);
+		}
 
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	    public static void main(String[] args) {
+	        MusicPlayer musicPlayer = MusicPlayer.getInstance();
+	        new TelaEscolhaDeInstrumento();
 
-	public static void main(String[] args) {
-		new TelaEscolhaDeInstrumento();
+	        // Tente recuperar o caminho do arquivo de música a partir do arquivo de configuração
+	        String selectedMusicPath = loadSelectedMusicPath();
+
+	        if (selectedMusicPath != null) {
+	            musicPlayer.play(selectedMusicPath); // Reproduza a música de fundo automaticamente
+	        }
+	        
+	    }
+
+	    private static String loadSelectedMusicPath() {
+	        try {
+	            BufferedReader reader = new BufferedReader(new FileReader("config.txt"));
+	            String selectedMusicPath = reader.readLine();
+	            reader.close();
+	            return selectedMusicPath;
+	        } catch (IOException e) {
+	            return null; // Se ocorrer algum erro ou se o arquivo não existir, retorne null
+	        }
+	    }
 	}
-}
+
+
+
+

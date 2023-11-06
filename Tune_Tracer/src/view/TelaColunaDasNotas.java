@@ -91,6 +91,7 @@ public class TelaColunaDasNotas extends JFrame{
 							estrelaPretaLabel.setVisible(false);
 							estrelaAmarelaLabel.setVisible(true);
 							Metodos.favoritadoSound();
+							Metodos.FavoritarNota("D","Violão");
 						}
 				}});
 		        estrelaAmarelaLabel.addMouseListener(new MouseAdapter() {
@@ -99,6 +100,7 @@ public class TelaColunaDasNotas extends JFrame{
 						if (estrelaAmarelaLabel.isVisible()) {
 							estrelaAmarelaLabel.setVisible(false);
 							estrelaPretaLabel.setVisible(true);
+							Metodos.Desfavoritar("D", "Violão");
 						}
 				}});
 		        

@@ -27,11 +27,10 @@ public class TelaCadastro extends JFrame {
 	private JTextField palavra_chaveField;
 
 	// construindo a janela
-	public TelaCadastro(CadastroController cadastroCon, ConexaoSQL sq) {
-
+	public TelaCadastro(CadastroController cadastroCon, ConexaoSQL sq, LoginController logcon) {
 		this.cadastroCon = cadastroCon;
 		this.sq = sq;
-
+		this.logcon = logcon;
 		setTitle("Tune Tracer");
 		setResizable(false);
 		setFont(new Font("Arial", Font.PLAIN, 12));
@@ -132,13 +131,12 @@ public class TelaCadastro extends JFrame {
 		emailField.setBounds(79, 215, 243, 27);
 		panel_1.add(emailField);
 		emailField.setColumns(10);
-		
-		
+
 		JLabel lblPalavraChave = new JLabel("Pergunta: Qual sua cor favorita?");
 		lblPalavraChave.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPalavraChave.setBounds(79, 334, 243, 27);
 		panel_1.add(lblPalavraChave);
-		
+
 		palavra_chaveField = new JTextField();
 		palavra_chaveField.setBounds(79, 371, 243, 27);
 		panel_1.add(palavra_chaveField);

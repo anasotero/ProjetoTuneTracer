@@ -115,7 +115,7 @@ public class TelaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastro TC = new TelaCadastro(cadascon, sq);
+				TelaCadastro TC = new TelaCadastro(cadascon, sq, logcon);
 				TC.setVisible(true);
 				dispose();
 

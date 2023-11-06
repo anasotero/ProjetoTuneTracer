@@ -35,12 +35,12 @@ public class FavoritosInsertDAO {
 	    }
 	    
 	    public void desfavoritar(FavoritosVO c) throws SQLException {
-	        String sql = "delete from favoritos where nota ='C' and instrumento = 'Violão';";
+	        String sql = "delete from favoritos where nota = ? and instrumento = ?;";
 	        
 	        try (PreparedStatement st = conexao.prepareStatement(sql)) {
 	        	
-	            //st.setString(1, c.getNota());
-	            //st.setString(2, c.getInstrumento());
+	            st.setString(1, c.getNota());
+	            st.setString(2, c.getInstrumento());
 	            st.executeUpdate();
 
 	            System.out.println("Desfavoritado");
