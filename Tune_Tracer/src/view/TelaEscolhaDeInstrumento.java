@@ -7,11 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import controller.LoginController;
 import controller.Metodos;
 import model.dao.ConexaoSQL;
 import view.MusicChooser;
@@ -27,8 +30,16 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JLabel lblViolao, lblTeclado, lblFlauta;
 	private JLabel Sair;
 	
+	@Override
+	public synchronized void addMouseListener(MouseListener l) {
+		// TODO Auto-generated method stub
+		super.addMouseListener(l);
+	}
+
 	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
 	Connection conexao = conexaoSQL.getConect(); 
+	static ConexaoSQL sq = new ConexaoSQL();
+	static LoginController logcon = new LoginController(sq);
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	ImageIcon imagemGuitarNR = new ImageIcon("imagens/violão.png");
@@ -38,7 +49,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	ImageIcon imagemFlautaNR = new ImageIcon("imagens/flauta.png");
 	ImageIcon imagemFlauta = new ImageIcon(imagemFlautaNR.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT));
 	ImageIcon imagemSair = new ImageIcon("imagens/sair.png");
-	ImageIcon sair = new ImageIcon(imagemSair.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
+	ImageIcon sair = new ImageIcon(imagemSair.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 	
 	public TelaEscolhaDeInstrumento() {
 		setTitle("Tune Tracer");
@@ -139,7 +150,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
-<<<<<<< HEAD
 				
 				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
 				MusicaFundo.setForeground(new Color(255, 255, 255));
@@ -155,8 +165,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
-=======
->>>>>>> 56a682ac4de501ac07a836df713f630aae5741a2
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');
@@ -221,7 +229,22 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		contentpane.setComponentZOrder(flauta, 0);
 		
 		JLabel Sair = new JLabel(sair);
+		Sair.setBounds(22, 20, 83, 50);
+		contentpane.add(Sair);
 		
+		Sair.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	TelaLogin TL = new TelaLogin(logcon, sq);
+				TL.setVisible(true);
+				dispose();
+				try {
+					Metodos.manterSessaoDesativado(conexao);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		    }
+		});
 
 		panel_2 = new JPanel();
 		panel_2.setLayout(null);
