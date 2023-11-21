@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import controller.CadastroController;
+import controller.LoginController;
 import model.dao.ConexaoSQL;
 import view.SplashScreenExample;
 import view.TelaCadastro;
@@ -14,10 +15,11 @@ public class Run {
 		
 		ConexaoSQL sq = new ConexaoSQL();
 		CadastroController cadastroCon = new CadastroController(sq);
+		LoginController logcon = new LoginController(sq);
 		
 		try(Connection conected = sq.getConect()){
 			
-			TelaCadastro tela = new TelaCadastro(cadastroCon, sq);
+			TelaCadastro tela = new TelaCadastro(cadastroCon, sq, logcon);
 			tela.setVisible(true);
 			
 		}catch(SQLException e){

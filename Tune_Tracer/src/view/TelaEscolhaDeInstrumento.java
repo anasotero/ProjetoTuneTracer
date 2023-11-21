@@ -7,10 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import controller.LoginController;
 import controller.Metodos;
 import model.dao.ConexaoSQL;
+import view.MusicChooser;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,9 +28,18 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	private JPanel contentpane;
 	private JPanel panel_1, panel_2;
 	private JLabel lblViolao, lblTeclado, lblFlauta;
+	private JLabel Sair;
 	
+	@Override
+	public synchronized void addMouseListener(MouseListener l) {
+		// TODO Auto-generated method stub
+		super.addMouseListener(l);
+	}
+
 	ConexaoSQL conexaoSQL = ConexaoSQL.getInstance(); // Obtenha uma instância da classe de conexão
 	Connection conexao = conexaoSQL.getConect(); 
+	static ConexaoSQL sq = new ConexaoSQL();
+	static LoginController logcon = new LoginController(sq);
 
 	ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 	ImageIcon imagemGuitarNR = new ImageIcon("imagens/violão.png");
@@ -32,7 +48,8 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 	ImageIcon imagemTeclado = new ImageIcon(imagemTecladoNR.getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
 	ImageIcon imagemFlautaNR = new ImageIcon("imagens/flauta.png");
 	ImageIcon imagemFlauta = new ImageIcon(imagemFlautaNR.getImage().getScaledInstance(400, 250, Image.SCALE_DEFAULT));
-
+	ImageIcon imagemSair = new ImageIcon("imagens/sair.png");
+	ImageIcon sair = new ImageIcon(imagemSair.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 	
 	public TelaEscolhaDeInstrumento() {
 		setTitle("Tune Tracer");
@@ -133,6 +150,21 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
+				
+				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
+				MusicaFundo.setForeground(new Color(255, 255, 255));
+				MusicaFundo.setBackground(new Color(255, 145, 77));
+				btnMenu.add(MusicaFundo);
+				setVisible(true);
+				
+				MusicaFundo.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicChooser MC = new MusicChooser();
+						MC.setVisible(true);
+						dispose();
+					}
+				});
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');
@@ -159,7 +191,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 					}
 				});
 				
-
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -167,11 +198,13 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		contentpane.setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(10, 125, 230, 193);
 		contentpane.add(panel);
 		panel.setLayout(null);
 		
 		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setLayout(null);
 		panel_1.setBounds(266, 125, 230, 193);
 		contentpane.add(panel_1);
@@ -195,8 +228,27 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		panel.add(flauta);
 		flauta.setLabelFor(contentpane);
 		contentpane.setComponentZOrder(flauta, 0);
+		
+		JLabel Sair = new JLabel(sair);
+		Sair.setBounds(22, 20, 83, 50);
+		contentpane.add(Sair);
+		
+		Sair.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	TelaLogin TL = new TelaLogin(logcon, sq);
+				TL.setVisible(true);
+				dispose();
+				try {
+					Metodos.manterSessaoDesativado(conexao);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+		    }
+		});
 
 		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setLayout(null);
 		panel_2.setBounds(526, 125, 230, 193);
 		contentpane.add(panel_2);
@@ -256,12 +308,43 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		contentpane.add(btnViolao);
 		contentpane.add(btnTeclado);
 		contentpane.add(btnFlauta);
+		
+		MusicPlayer musicPlayer = MusicPlayer.getInstance();
+		String selectedMusicPath = loadSelectedMusicPath();
+		
+		if (selectedMusicPath != null) {
+            musicPlayer.play(selectedMusicPath);
+		}
 
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	    public static void main(String[] args) {
+	        MusicPlayer musicPlayer = MusicPlayer.getInstance();
+	        new TelaEscolhaDeInstrumento();
 
-	public static void main(String[] args) {
-		new TelaEscolhaDeInstrumento();
+	        // Tente recuperar o caminho do arquivo de música a partir do arquivo de configuração
+	        String selectedMusicPath = loadSelectedMusicPath();
+
+	        if (selectedMusicPath != null) {
+	            musicPlayer.play(selectedMusicPath); // Reproduza a música de fundo automaticamente
+	        }
+	        
+	    }
+
+	    private static String loadSelectedMusicPath() {
+	        try {
+	            BufferedReader reader = new BufferedReader(new FileReader("config.txt"));
+	            String selectedMusicPath = reader.readLine();
+	            reader.close();
+	            return selectedMusicPath;
+	        } catch (IOException e) {
+	            return null; // Se ocorrer algum erro ou se o arquivo não existir, retorne null
+	        }
+	    }
 	}
-}
+
+
+
+

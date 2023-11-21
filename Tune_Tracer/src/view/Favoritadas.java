@@ -3,7 +3,12 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.ObjectInputFilter.Config;
+import java.nio.file.DirectoryStream.Filter;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -11,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import model.dao.ConexaoSQL;
+import model.vo.FavoritosVO;
 
 public class Favoritadas extends JFrame {
 
@@ -23,6 +29,7 @@ public class Favoritadas extends JFrame {
 	private JTable tabela;
 	private DefaultTableModel model;
 	private JPanel contentPane;
+	private static String opcao;
 
 	public Favoritadas() {
 		setTitle("Tune Tracer");
@@ -56,7 +63,7 @@ public class Favoritadas extends JFrame {
 		JTableHeader header = tabela.getTableHeader();
 		header.setBackground(CorFundo);
 
-		carregarRegistrosDoBancoDeDados();
+		carregarRegistrosDoBancoDeDados(null);
 
 		// configuração do menu
 
@@ -98,11 +105,64 @@ public class Favoritadas extends JFrame {
 				dispose();
 			}
 		});
+		
+		JMenu filtrar = new JMenu("Filtrar");
+		filtrar.setForeground(new Color(255, 255, 255));
+		barra.add(filtrar);
+		
+		JMenuItem btnViolao = new JMenuItem("Violão");
+		btnViolao.setMnemonic('V');
+		btnViolao.setBackground(new Color(255, 255, 255));
+		btnViolao.setForeground(new Color(255, 120, 0));
+		filtrar.add(btnViolao);
+		setVisible(true);
+		
+		btnViolao.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				carregarRegistrosDoBancoDeDadosViolão(opcao);
+				
+			}
+		});
+		
+		JMenuItem btnFlauta = new JMenuItem("Flauta");
+		btnFlauta.setMnemonic('F');
+		btnFlauta.setBackground(new Color(255, 255, 255));
+		btnFlauta.setForeground(new Color(255, 120, 0));
+		filtrar.add(btnFlauta);
+		setVisible(true);
+		
+		btnFlauta.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				carregarRegistrosDoBancoDeDadosFlauta(opcao);
+			
+			}
+		});
+		
+		JMenuItem btnTeclado = new JMenuItem("Teclado");
+		btnTeclado.setMnemonic('T');
+		btnTeclado.setBackground(new Color(255, 255, 255));
+		btnTeclado.setForeground(new Color(255, 120, 0));
+		filtrar.add(btnTeclado);
+		setVisible(true);
+		
+		btnTeclado.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				carregarRegistrosDoBancoDeDadosTeclado(opcao);
+			}
+		});
 
 		setLocationRelativeTo(null);
 	}
 
-	private void carregarRegistrosDoBancoDeDados() {
+	private void carregarRegistrosDoBancoDeDados(String instrumento) {
 		String url = "jdbc:mysql://localhost:3306/tunetracer";
 		String usuario = "root";
 		String senha = "root";
@@ -120,6 +180,96 @@ public class Favoritadas extends JFrame {
 			for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
 				model.addColumn(resultSet.getMetaData().getColumnName(i));
 			}
+
+			// Adicionar os registros à tabela
+			while (resultSet.next()) {
+				Object[] row = new Object[resultSet.getMetaData().getColumnCount()];
+				for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+					row[i - 1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		setVisible(true);
+	}
+	
+	private void carregarRegistrosDoBancoDeDadosViolão(String instrumento) {
+		String url = "jdbc:mysql://localhost:3306/tunetracer";
+		String usuario = "root";
+		String senha = "root";
+
+		try (Connection conexao = DriverManager.getConnection(url, usuario, senha)) {
+
+			String query = "SELECT nota, instrumento FROM favoritos WHERE instrumento = 'Violão' ";
+			PreparedStatement statement = conexao.prepareStatement(query);
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			
+			model.setRowCount(0);
+			
+
+			// Adicionar os registros à tabela
+			while (resultSet.next()) {
+				Object[] row = new Object[resultSet.getMetaData().getColumnCount()];
+				for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+					row[i - 1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		setVisible(true);
+	}
+	
+	private void carregarRegistrosDoBancoDeDadosFlauta(String instrumento) {
+		String url = "jdbc:mysql://localhost:3306/tunetracer";
+		String usuario = "root";
+		String senha = "root";
+
+		try (Connection conexao = DriverManager.getConnection(url, usuario, senha)) {
+
+			String query = "SELECT nota, instrumento FROM favoritos WHERE instrumento = 'Flauta' ";
+			PreparedStatement statement = conexao.prepareStatement(query);
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			
+			model.setRowCount(0);
+			
+
+			// Adicionar os registros à tabela
+			while (resultSet.next()) {
+				Object[] row = new Object[resultSet.getMetaData().getColumnCount()];
+				for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+					row[i - 1] = resultSet.getObject(i);
+				}
+				model.addRow(row);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		setVisible(true);
+	}
+	
+	private void carregarRegistrosDoBancoDeDadosTeclado(String instrumento) {
+		String url = "jdbc:mysql://localhost:3306/tunetracer";
+		String usuario = "root";
+		String senha = "root";
+
+		try (Connection conexao = DriverManager.getConnection(url, usuario, senha)) {
+
+			String query = "SELECT nota, instrumento FROM favoritos WHERE instrumento = 'Teclado' ";
+			PreparedStatement statement = conexao.prepareStatement(query);
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			
+			model.setRowCount(0);
+			
 
 			// Adicionar os registros à tabela
 			while (resultSet.next()) {
