@@ -3,28 +3,12 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.ObjectInputFilter.Config;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 import java.nio.file.DirectoryStream.Filter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-import java.sql.*;
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -32,18 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import model.dao.ConexaoSQL;
-<<<<<<< HEAD
 import model.vo.FavoritosVO;
-=======
-<<<<<<< HEAD
-import model.vo.FavoritosVO;
-=======
-<<<<<<< HEAD
-import model.vo.FavoritosVO;
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 public class Favoritadas extends JFrame {
 
@@ -56,18 +29,7 @@ public class Favoritadas extends JFrame {
 	private JTable tabela;
 	private DefaultTableModel model;
 	private JPanel contentPane;
-<<<<<<< HEAD
 	private static String opcao;
-=======
-<<<<<<< HEAD
-	private static String opcao;
-=======
-<<<<<<< HEAD
-	private static String opcao;
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 	public Favoritadas() {
 		setTitle("Tune Tracer");
@@ -101,19 +63,7 @@ public class Favoritadas extends JFrame {
 		JTableHeader header = tabela.getTableHeader();
 		header.setBackground(CorFundo);
 
-<<<<<<< HEAD
 		carregarRegistrosDoBancoDeDados(null);
-=======
-<<<<<<< HEAD
-		carregarRegistrosDoBancoDeDados(null);
-=======
-<<<<<<< HEAD
-		carregarRegistrosDoBancoDeDados(null);
-=======
-		carregarRegistrosDoBancoDeDados();
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 		// configuração do menu
 
@@ -155,13 +105,6 @@ public class Favoritadas extends JFrame {
 				dispose();
 			}
 		});
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 		
 		JMenu filtrar = new JMenu("Filtrar");
 		filtrar.setForeground(new Color(255, 255, 255));
@@ -215,31 +158,11 @@ public class Favoritadas extends JFrame {
 				carregarRegistrosDoBancoDeDadosTeclado(opcao);
 			}
 		});
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 		setLocationRelativeTo(null);
 	}
 
-<<<<<<< HEAD
 	private void carregarRegistrosDoBancoDeDados(String instrumento) {
-=======
-<<<<<<< HEAD
-	private void carregarRegistrosDoBancoDeDados(String instrumento) {
-=======
-<<<<<<< HEAD
-	private void carregarRegistrosDoBancoDeDados(String instrumento) {
-=======
-	private void carregarRegistrosDoBancoDeDados() {
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 		String url = "jdbc:mysql://localhost:3306/tunetracer";
 		String usuario = "root";
 		String senha = "root";
@@ -272,13 +195,6 @@ public class Favoritadas extends JFrame {
 		}
 		setVisible(true);
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 	
 	private void carregarRegistrosDoBancoDeDadosViolão(String instrumento) {
 		String url = "jdbc:mysql://localhost:3306/tunetracer";
@@ -369,14 +285,6 @@ public class Favoritadas extends JFrame {
 		}
 		setVisible(true);
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 	public static void main(String[] args) {
 

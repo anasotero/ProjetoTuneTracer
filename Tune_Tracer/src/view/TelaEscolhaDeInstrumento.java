@@ -150,16 +150,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 				
 				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
 				MusicaFundo.setForeground(new Color(255, 255, 255));
@@ -175,17 +165,6 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 						dispose();
 					}
 				});
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 56a682ac4de501ac07a836df713f630aae5741a2
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
->>>>>>> 270fd610e27dfd02873de75846223d3b7c0fb44e
 
 				JMenuItem retornar = new JMenuItem("Retornar");
 				retornar.setMnemonic('R');

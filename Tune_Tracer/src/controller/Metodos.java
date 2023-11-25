@@ -45,6 +45,7 @@ public class Metodos {
         }
     }
 
+    // métodos de som do sistema
     public static void guitarSound() {
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/guitar.wav"));
@@ -464,7 +465,152 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
+    
+    public static void doFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/c_flauta.wav"));
+            tap = AudioSystem.getClip();
 
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void reFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/re_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void miFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/mi_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void faFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/fa_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void solFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/sol_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void laFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/la_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void siFlauta() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/si_flauta.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    // métodos de favoritar e desfavoritar
     public static boolean manterSessaoAtivado(Connection conect) throws SQLException {
         String sql = "UPDATE manterSessão SET verificador = 1 WHERE id = 1";
 
