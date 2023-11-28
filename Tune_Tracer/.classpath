@@ -2,7 +2,13 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
+<<<<<<< HEAD
 			<attribute name="module" value="true"/>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -13,6 +19,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.33.jar"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/Users/Matheus Carvalho/Downloads/itextpdf-5.5.13.3.jar"/>
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

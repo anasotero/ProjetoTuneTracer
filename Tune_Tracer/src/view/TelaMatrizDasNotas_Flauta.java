@@ -599,7 +599,11 @@ public class TelaMatrizDasNotas_Flauta extends JFrame {
 
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setBackground(new Color(255, 145, 77));
+<<<<<<< HEAD
 		setting.setForeground(new Color(128, 128, 128));
+=======
+		setting.setForeground(new Color(255, 255, 255));
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 		btnMenu.add(setting);
 		setVisible(true);
 

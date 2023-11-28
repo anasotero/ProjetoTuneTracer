@@ -1,9 +1,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>Tune_Tracer3</groupId>
+<<<<<<< HEAD
   <artifactId>Tune_Tracer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
+=======
+<<<<<<< HEAD
+  <artifactId>Tune_Tracer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <build>
+=======
+  <artifactId>Tune_Tracer3</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -17,6 +38,10 @@
   
   
   <dependencies>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 		<dependency>
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>pdfbox</artifactId>
@@ -40,6 +65,17 @@
 		    <artifactId>jsvg</artifactId>
 		    <version>1.2.0</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+=======
+<dependency>
+    <groupId>org.apache.pdfbox</groupId>
+    <artifactId>pdfbox</artifactId>
+    <version>2.0.24</version>
+</dependency>
+
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 </dependencies>
 
   
