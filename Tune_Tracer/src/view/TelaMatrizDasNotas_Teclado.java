@@ -29,6 +29,7 @@ public class TelaMatrizDasNotas_Teclado extends JFrame{
 		getContentPane().setBackground(CorFundo);
 		getContentPane().setLayout(null);
 		setIconImage(ocarina.getImage());
+		Metodos.verificaTema((JComponent) getContentPane());
 
 		// botões dos acordes
 		btnC = new JButton("C");
@@ -284,7 +285,7 @@ public class TelaMatrizDasNotas_Teclado extends JFrame{
 
 				JMenuItem setting = new JMenuItem("Configurações");
 				setting.setBackground(new Color(255, 145, 77));
-				setting.setForeground(new Color(255, 255, 255));
+				setting.setForeground(new Color(128, 128, 128));
 				btnMenu.add(setting);
 				setVisible(true);
 

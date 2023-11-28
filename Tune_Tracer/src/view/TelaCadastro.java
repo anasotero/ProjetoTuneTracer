@@ -5,6 +5,9 @@ import java.awt.event.*;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import com.formdev.flatlaf.FlatLightLaf;
+
 import controller.CadastroController;
 import controller.LoginController;
 import model.dao.ConexaoSQL;
@@ -37,6 +40,12 @@ public class TelaCadastro extends JFrame {
 		setBounds(1080, 720, 780, 583);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(ocarina.getImage());
+		
+		try {
+		    UIManager.setLookAndFeel( new FlatLightLaf() );
+		} catch( Exception ex ) {
+		    System.err.println( "Failed to initialize LaF" );
+		}
 
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
