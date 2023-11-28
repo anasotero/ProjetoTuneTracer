@@ -113,9 +113,71 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		            System.err.println("Failed to initialize LaF");
 		        }
 				
+<<<<<<< HEAD
 				reiniciarTela();
 			}
 		});
+=======
+				JMenuItem blog = new JMenuItem("Blogs de Música");
+				blog.setForeground(new Color(255, 255, 255));
+				blog.setBackground(new Color(255, 145, 77));
+				btnMenu.add(blog);
+				setVisible(true);
+				
+				blog.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaBlog TBL = new TelaBlog();
+						TBL.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem TV = new JMenuItem("Teclado Virtual");
+				TV.setForeground(new Color(255, 255, 255));
+				TV.setBackground(new Color(255, 145, 77));
+				btnMenu.add(TV);
+				setVisible(true);
+				
+				TV.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TecladoVirtual tvc = new TecladoVirtual();
+						tvc.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem Musicas = new JMenuItem("Músicas de Exemplo");
+				Musicas.setForeground(new Color(255, 255, 255));
+				Musicas.setBackground(new Color(255, 145, 77));
+				btnMenu.add(Musicas);
+				setVisible(true);
+				
+				Musicas.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicasDeExemplo ME = new MusicasDeExemplo();
+						ME.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
+				MusicaFundo.setForeground(new Color(255, 255, 255));
+				MusicaFundo.setBackground(new Color(255, 145, 77));
+				btnMenu.add(MusicaFundo);
+				setVisible(true);
+				
+				MusicaFundo.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicChooser MC = new MusicChooser();
+						MC.setVisible(true);
+						dispose();
+					}
+				});
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
 
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setBackground(new Color(255, 145, 77));
@@ -137,6 +199,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		btnMenu.add(notasFavoritas);
 		setVisible(true);
 
+<<<<<<< HEAD
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -239,6 +302,17 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 			}
 		});
 
+=======
+				retornar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+						TCDN.setVisible(true);
+						dispose();
+					}
+				});
+				
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
