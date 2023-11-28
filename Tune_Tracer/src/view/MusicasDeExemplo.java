@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 
+import controller.Metodos;
 import model.dao.ConexaoSQL;
 
 import java.awt.*;
@@ -35,6 +36,7 @@ public class MusicasDeExemplo extends JFrame {
 
 		panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		Metodos.verificaTema(panel);
 
 		scrollPane = new JScrollPane(panel);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -150,7 +152,7 @@ public class MusicasDeExemplo extends JFrame {
 
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
+		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
 

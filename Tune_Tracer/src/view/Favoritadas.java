@@ -3,37 +3,21 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.ObjectInputFilter.Config;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 import java.nio.file.DirectoryStream.Filter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-<<<<<<< HEAD
-=======
-=======
-import java.sql.*;
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import controller.Metodos;
 import model.dao.ConexaoSQL;
-<<<<<<< HEAD
 import model.vo.FavoritosVO;
-=======
-<<<<<<< HEAD
-import model.vo.FavoritosVO;
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 
 public class Favoritadas extends JFrame {
 
@@ -46,14 +30,7 @@ public class Favoritadas extends JFrame {
 	private JTable tabela;
 	private DefaultTableModel model;
 	private JPanel contentPane;
-<<<<<<< HEAD
 	private static String opcao;
-=======
-<<<<<<< HEAD
-	private static String opcao;
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 
 	public Favoritadas() {
 		setTitle("Tune Tracer");
@@ -67,11 +44,15 @@ public class Favoritadas extends JFrame {
 		contentPane.setBackground(CorLaranja); // Defina a cor de fundo do painel
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		Metodos.verificaTema(contentPane);
 
 		model = new DefaultTableModel();
 		tabela = new JTable(model);
 
 		tabela.setBackground(CorFundo);
+		tabela.setForeground(Color.BLACK);
+		Font fonte = tabela.getFont();
+        fonte = fonte.deriveFont(Font.BOLD, 16f);
 
 		JScrollPane scrollPane = new JScrollPane(tabela);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -85,17 +66,10 @@ public class Favoritadas extends JFrame {
 
 		// Defina a cor de fundo do cabeçalho da tabela
 		JTableHeader header = tabela.getTableHeader();
+		header.setForeground(Color.BLACK);
 		header.setBackground(CorFundo);
 
-<<<<<<< HEAD
 		carregarRegistrosDoBancoDeDados(null);
-=======
-<<<<<<< HEAD
-		carregarRegistrosDoBancoDeDados(null);
-=======
-		carregarRegistrosDoBancoDeDados();
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 
 		// configuração do menu
 
@@ -109,7 +83,7 @@ public class Favoritadas extends JFrame {
 
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
+		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
 
@@ -137,10 +111,6 @@ public class Favoritadas extends JFrame {
 				dispose();
 			}
 		});
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 		
 		JMenu filtrar = new JMenu("Filtrar");
 		filtrar.setForeground(new Color(255, 255, 255));
@@ -194,24 +164,11 @@ public class Favoritadas extends JFrame {
 				carregarRegistrosDoBancoDeDadosTeclado(opcao);
 			}
 		});
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 
 		setLocationRelativeTo(null);
 	}
 
-<<<<<<< HEAD
 	private void carregarRegistrosDoBancoDeDados(String instrumento) {
-=======
-<<<<<<< HEAD
-	private void carregarRegistrosDoBancoDeDados(String instrumento) {
-=======
-	private void carregarRegistrosDoBancoDeDados() {
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 		String url = "jdbc:mysql://localhost:3306/tunetracer";
 		String usuario = "root";
 		String senha = "root";
@@ -244,10 +201,6 @@ public class Favoritadas extends JFrame {
 		}
 		setVisible(true);
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 	
 	private void carregarRegistrosDoBancoDeDadosViolão(String instrumento) {
 		String url = "jdbc:mysql://localhost:3306/tunetracer";
@@ -338,11 +291,6 @@ public class Favoritadas extends JFrame {
 		}
 		setVisible(true);
 	}
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 
 	public static void main(String[] args) {
 

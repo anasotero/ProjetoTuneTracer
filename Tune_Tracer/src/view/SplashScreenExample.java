@@ -95,13 +95,6 @@ class SplashScreen extends JFrame {
 		dispose();
 	}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3
 	public static void verificaManterSessao(Connection conect, SplashScreenExample splashScreen, LoginController logcon2) throws SQLException {
 		String sql = "SELECT verificador FROM manterSessão WHERE id = 1";
 
@@ -147,34 +140,3 @@ class SplashScreen extends JFrame {
 		}
 	}
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-        try (PreparedStatement st = conect.prepareStatement(sql)) {
-            ResultSet resultSet = st.executeQuery();
-            if (resultSet.next()) {
-                int verificador = resultSet.getInt("verificador");
-                if (verificador == 1) {
-                    TelaEscolhaDeInstrumento TL = new TelaEscolhaDeInstrumento();
-                    TL.setVisible(true);
-                    splashScreen.setVisible(false);
-                } else if (verificador == 0) {
-                    SplashScreen newSplash = new SplashScreen(10000);
-                    newSplash.showSplash();
-                    newSplash.hideSplash();
-                    splashScreen.setVisible(false);
-                    
-                    new TelaCadastro(cadastroCon, sq);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
-}
->>>>>>> 56a682ac4de501ac07a836df713f630aae5741a2
->>>>>>> 633219cb63cddc3c928213ee0ec0b1636e231544
->>>>>>> d00be894dcb8ad52549d2474cbbdecc1899c48e3

@@ -42,6 +42,7 @@ public class RecuperarSenha extends JFrame {
 		setIconImage(ocarina.getImage());
 		getContentPane().setBackground(fundo);
 		getContentPane().setLayout(null);
+		Metodos.verificaTema((JComponent) getContentPane());
 		
 		// configuração do menu
 
@@ -55,7 +56,7 @@ public class RecuperarSenha extends JFrame {
 
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
+		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
 
