@@ -3,7 +3,18 @@ package view;
 import javax.swing.*;
 
 import model.dao.ConexaoSQL;
+<<<<<<< HEAD
 import controller.Metodos;
+=======
+<<<<<<< HEAD
+import controller.Metodos;
+=======
+<<<<<<< HEAD
+import controller.Metodos;
+=======
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 import controller.OpenPDF;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -245,7 +256,19 @@ public class TelaBlog extends JFrame {
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setFont(new Font("Arial", Font.BOLD, 14));
 		setting.setBackground(new Color(255, 145, 77));
+<<<<<<< HEAD
 		setting.setForeground(new Color(128, 128, 128));
+=======
+<<<<<<< HEAD
+		setting.setForeground(new Color(128, 128, 128));
+		btnMenu.add(setting);
+=======
+<<<<<<< HEAD
+		setting.setForeground(new Color(128, 128, 128));
+		btnMenu.add(setting);
+=======
+		setting.setForeground(new Color(255, 255, 255));
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		btnMenu.add(setting);
 		setVisible(true);
 
@@ -275,9 +298,75 @@ public class TelaBlog extends JFrame {
 			}
 		});
 
+<<<<<<< HEAD
+=======
+		setLocationRelativeTo(null);
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+		setVisible(true);
+
+<<<<<<< HEAD
+		setting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConfigSis CO = new ConfigSis(conexao);
+				CO.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setMnemonic('R');
+		retornar.setBackground(new Color(255, 255, 255));
+		retornar.setForeground(new Color(255, 128, 0));
+		btnMenu.add(retornar);
+		setVisible(true);
+
+		retornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+				TDI.setVisible(true);
+				dispose();
+			}
+		});
+
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
+		setVisible(true);
+
+<<<<<<< HEAD
+		setting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConfigSis CO = new ConfigSis(conexao);
+				CO.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setMnemonic('R');
+		retornar.setBackground(new Color(255, 255, 255));
+		retornar.setForeground(new Color(255, 128, 0));
+		btnMenu.add(retornar);
+		setVisible(true);
+
+		retornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaEscolhaDeInstrumento TDI = new TelaEscolhaDeInstrumento();
+				TDI.setVisible(true);
+				dispose();
+			}
+		});
+
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		setVisible(true);
 	}
 
+=======
+=======
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> new TelaBlog());
 	}

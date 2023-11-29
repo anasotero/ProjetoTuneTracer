@@ -788,12 +788,20 @@ public class TelaMatrizDasNotas_Teclado extends JFrame {
 		btnMenu.setForeground(new Color(255, 255, 255));
 		barra.add(btnMenu);
 
+<<<<<<< HEAD
 		JMenuItem setting = new JMenuItem("Configurações");
 		setting.setFont(new Font("Arial", Font.BOLD, 14));
 		setting.setBackground(new Color(255, 145, 77));
 		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
+=======
+				JMenuItem setting = new JMenuItem("Configurações");
+				setting.setBackground(new Color(255, 145, 77));
+				setting.setForeground(new Color(128, 128, 128));
+				btnMenu.add(setting);
+				setVisible(true);
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 
 		setting.addActionListener(new ActionListener() {
 			@Override

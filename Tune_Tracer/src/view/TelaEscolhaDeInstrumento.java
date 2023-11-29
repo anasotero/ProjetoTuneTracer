@@ -3,7 +3,10 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+<<<<<<< HEAD
 import java.awt.Cursor;
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -83,7 +86,10 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		barra.add(btnTema);
 
 		JMenuItem claro = new JMenuItem("Tema claro");
+<<<<<<< HEAD
 		claro.setFont(new Font("Arial", Font.BOLD, 14));
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		claro.setBackground(new Color(255, 145, 77));
 		claro.setForeground(new Color(128, 128, 128));
 		btnTema.add(claro);
@@ -96,6 +102,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		        } catch (Exception ex) {
 		            System.err.println("Failed to initialize LaF");
 		        }
+<<<<<<< HEAD
 				
 				reiniciarTela();
 			}
@@ -115,13 +122,124 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		        } catch (Exception ex) {
 		            System.err.println("Failed to initialize LaF");
 		        }
+=======
+<<<<<<< HEAD
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
+				
+				reiniciarTela();
+			}
+		});
+<<<<<<< HEAD
+
+		JMenuItem setting = new JMenuItem("Configurações");
+		setting.setFont(new Font("Arial", Font.BOLD, 14));
+=======
+
+		JMenuItem escuro = new JMenuItem("Tema escuro");
+		escuro.setBackground(new Color(255, 145, 77));
+		escuro.setForeground(new Color(128, 128, 128));
+		btnTema.add(escuro);
+		setVisible(true);
+		escuro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+		            UIManager.setLookAndFeel(new FlatDarkLaf());
+		        } catch (Exception ex) {
+		            System.err.println("Failed to initialize LaF");
+		        }
+=======
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 				
 				reiniciarTela();
 			}
 		});
 
+<<<<<<< HEAD
+=======
+		JMenuItem escuro = new JMenuItem("Tema escuro");
+		escuro.setBackground(new Color(255, 145, 77));
+		escuro.setForeground(new Color(128, 128, 128));
+		btnTema.add(escuro);
+		setVisible(true);
+		escuro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+		            UIManager.setLookAndFeel(new FlatDarkLaf());
+		        } catch (Exception ex) {
+		            System.err.println("Failed to initialize LaF");
+		        }
+				
+<<<<<<< HEAD
+				reiniciarTela();
+			}
+		});
+=======
+				JMenuItem blog = new JMenuItem("Blogs de Música");
+				blog.setForeground(new Color(255, 255, 255));
+				blog.setBackground(new Color(255, 145, 77));
+				btnMenu.add(blog);
+				setVisible(true);
+				
+				blog.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaBlog TBL = new TelaBlog();
+						TBL.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem TV = new JMenuItem("Teclado Virtual");
+				TV.setForeground(new Color(255, 255, 255));
+				TV.setBackground(new Color(255, 145, 77));
+				btnMenu.add(TV);
+				setVisible(true);
+				
+				TV.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TecladoVirtual tvc = new TecladoVirtual();
+						tvc.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem Musicas = new JMenuItem("Músicas de Exemplo");
+				Musicas.setForeground(new Color(255, 255, 255));
+				Musicas.setBackground(new Color(255, 145, 77));
+				btnMenu.add(Musicas);
+				setVisible(true);
+				
+				Musicas.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicasDeExemplo ME = new MusicasDeExemplo();
+						ME.setVisible(true);
+						dispose();
+					}
+				});
+				
+				JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
+				MusicaFundo.setForeground(new Color(255, 255, 255));
+				MusicaFundo.setBackground(new Color(255, 145, 77));
+				btnMenu.add(MusicaFundo);
+				setVisible(true);
+				
+				MusicaFundo.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MusicChooser MC = new MusicChooser();
+						MC.setVisible(true);
+						dispose();
+					}
+				});
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
 		JMenuItem setting = new JMenuItem("Configurações");
-		setting.setFont(new Font("Arial", Font.BOLD, 14));
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		setting.setBackground(new Color(255, 145, 77));
 		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
@@ -136,11 +254,15 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		});
 
 		JMenuItem notasFavoritas = new JMenuItem("Favoritadas");
+<<<<<<< HEAD
 		notasFavoritas.setFont(new Font("Arial", Font.BOLD, 14));
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		notasFavoritas.setForeground(new Color(128, 128, 128));
 		notasFavoritas.setBackground(new Color(255, 145, 77));
 		btnMenu.add(notasFavoritas);
 		setVisible(true);
+<<<<<<< HEAD
 
 		notasFavoritas.addMouseListener(new MouseAdapter() {
 			@Override
@@ -265,6 +387,129 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 			}
 		});
 
+=======
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
+		notasFavoritas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Favoritadas TFA = new Favoritadas();
+				TFA.setVisible(true);
+				dispose();
+			}
+		});
+		notasFavoritas.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Favoritadas TFA = new Favoritadas();
+				TFA.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem blog = new JMenuItem("Blogs de Música");
+		blog.setForeground(new Color(128, 128, 128));
+		blog.setBackground(new Color(255, 145, 77));
+		btnMenu.add(blog);
+		setVisible(true);
+
+		blog.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaBlog TBL = new TelaBlog();
+				TBL.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem TV = new JMenuItem("Teclado Virtual");
+		TV.setForeground(new Color(128, 128, 128));
+		TV.setBackground(new Color(255, 145, 77));
+		btnMenu.add(TV);
+		setVisible(true);
+
+		TV.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TecladoVirtual tvc = new TecladoVirtual();
+				tvc.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem Musicas = new JMenuItem("Músicas de Exemplo");
+		Musicas.setForeground(new Color(128, 128, 128));
+		Musicas.setBackground(new Color(255, 145, 77));
+		btnMenu.add(Musicas);
+		setVisible(true);
+
+		Musicas.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MusicasDeExemplo ME = new MusicasDeExemplo();
+				ME.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem MusicaFundo = new JMenuItem("Música de fundo");
+		MusicaFundo.setForeground(new Color(128, 128, 128));
+		MusicaFundo.setBackground(new Color(255, 145, 77));
+		btnMenu.add(MusicaFundo);
+		setVisible(true);
+
+		MusicaFundo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MusicChooser MC = new MusicChooser();
+				MC.setVisible(true);
+				dispose();
+			}
+		});
+
+		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setMnemonic('R');
+		retornar.setBackground(new Color(255, 255, 255));
+		retornar.setForeground(new Color(255, 128, 0));
+		btnMenu.add(retornar);
+		setVisible(true);
+
+		retornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TCDN.setVisible(true);
+				dispose();
+			}
+		});
+
+		retornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+				TCDN.setVisible(true);
+				dispose();
+			}
+		});
+
+<<<<<<< HEAD
+=======
+=======
+				retornar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						TelaColunaDasNotas TCDN = new TelaColunaDasNotas();
+						TCDN.setVisible(true);
+						dispose();
+					}
+				});
+				
+>>>>>>> c2df17681079cd9420c226a697e71d9edc7a9477
+>>>>>>> bcdb8ce7d72a759f8473f6d93e0ecaceb505ad1b
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		contentpane = new JPanel();
 		contentpane.setBackground(new Color(255, 147, 74));
 		contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -332,7 +577,11 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 		JButton btnViolao = new JButton("Violão");
 		btnViolao.setBackground(Color.WHITE);
 		btnViolao.setForeground(new Color(35, 36, 35));
+<<<<<<< HEAD
 		btnViolao.setFont(new Font("Tahoma", Font.BOLD, 20));
+=======
+		btnViolao.setFont(new Font("Tahoma", Font.BOLD, 30));
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		btnViolao.setBounds(58, 330, 132, 40);
 		btnViolao.addActionListener(new ActionListener() {
 
@@ -345,6 +594,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 			}
 
 		});
+<<<<<<< HEAD
 		btnViolao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnViolao.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -354,11 +604,17 @@ public class TelaEscolhaDeInstrumento extends JFrame {
                 btnViolao.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
         });
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 
 		JButton btnTeclado = new JButton("Teclado");
 		btnTeclado.setBackground(Color.WHITE);
 		btnTeclado.setForeground(new Color(35, 36, 35));
+<<<<<<< HEAD
 		btnTeclado.setFont(new Font("Tahoma", Font.BOLD, 20));
+=======
+		btnTeclado.setFont(new Font("Tahoma", Font.BOLD, 30));
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		btnTeclado.setBounds(286, 330, 198, 40);
 		btnTeclado.addActionListener(new ActionListener() {
 
@@ -371,6 +627,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 			}
 
 		});
+<<<<<<< HEAD
 		btnTeclado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnTeclado.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -380,11 +637,17 @@ public class TelaEscolhaDeInstrumento extends JFrame {
                 btnTeclado.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
         });
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 
 		JButton btnFlauta = new JButton("Flauta");
 		btnFlauta.setBackground(Color.WHITE);
 		btnFlauta.setForeground(new Color(35, 36, 35));
+<<<<<<< HEAD
 		btnFlauta.setFont(new Font("Tahoma", Font.BOLD, 20));
+=======
+		btnFlauta.setFont(new Font("Tahoma", Font.BOLD, 30));
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 		btnFlauta.setBounds(536, 328, 198, 40);
 		btnFlauta.addActionListener(new ActionListener() {
 
@@ -397,6 +660,7 @@ public class TelaEscolhaDeInstrumento extends JFrame {
 			}
 
 		});
+<<<<<<< HEAD
 		btnFlauta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnFlauta.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -406,6 +670,8 @@ public class TelaEscolhaDeInstrumento extends JFrame {
                 btnFlauta.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
         });
+=======
+>>>>>>> f158ddb8afa2599468f0bc42d92f482451467e7a
 
 		contentpane.add(btnViolao);
 		contentpane.add(btnTeclado);
