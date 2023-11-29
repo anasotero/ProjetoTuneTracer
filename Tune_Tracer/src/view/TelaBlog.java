@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 
 import model.dao.ConexaoSQL;
+import controller.Metodos;
 import controller.OpenPDF;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -43,6 +44,8 @@ public class TelaBlog extends JFrame {
 		setIconImage(ocarina.getImage());
 		getContentPane().setBackground(CorLaranja);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
+		Metodos.verificaTema((JComponent) getContentPane());
 
 		JLabel imageCifra = new JLabel("Bb");
 		imageCifra.setForeground(Color.BLACK);
@@ -240,8 +243,9 @@ public class TelaBlog extends JFrame {
 		barra.add(btnMenu);
 
 		JMenuItem setting = new JMenuItem("Configurações");
+		setting.setFont(new Font("Arial", Font.BOLD, 14));
 		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
+		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
 
@@ -255,6 +259,7 @@ public class TelaBlog extends JFrame {
 		});
 
 		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setFont(new Font("Arial", Font.BOLD, 14));
 		retornar.setMnemonic('R');
 		retornar.setBackground(new Color(255, 255, 255));
 		retornar.setForeground(new Color(255, 128, 0));
@@ -270,7 +275,6 @@ public class TelaBlog extends JFrame {
 			}
 		});
 
-		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

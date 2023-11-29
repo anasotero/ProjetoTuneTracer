@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -11,6 +12,7 @@ public class MusicChooser extends JFrame {
     private static final String CONFIG_FILE = "config.txt";
     private static String selectedMusicPath = null;
     private JButton chooseButton;
+    private ImageIcon ocarina = new ImageIcon("imagens/ocarina.png");
 
     public MusicChooser() {
         loadConfig();
@@ -18,6 +20,7 @@ public class MusicChooser extends JFrame {
         setTitle("Escolha de Música");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 100);
+        setIconImage(ocarina.getImage());
 
         chooseButton = new JButton("Escolher Música");
         add(chooseButton);
@@ -48,6 +51,7 @@ public class MusicChooser extends JFrame {
 		barra.add(btnMenu);
 		
 		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setFont(new Font("Arial", Font.BOLD, 14));
 		retornar.setMnemonic('R');
 		retornar.setBackground(new Color(255, 255, 255));
 		retornar.setForeground(new Color(255, 128, 0));

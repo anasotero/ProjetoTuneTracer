@@ -60,6 +60,7 @@ public class TelaNota_C extends JFrame {
 				barra.add(btnMenu);
 
 				JMenuItem setting = new JMenuItem("Configurações");
+				setting.setFont(new Font("Arial", Font.BOLD, 14));
 				setting.setBackground(new Color(255, 145, 77));
 				setting.setForeground(new Color(255, 255, 255));
 				btnMenu.add(setting);
@@ -75,6 +76,7 @@ public class TelaNota_C extends JFrame {
 				});
 
 				JMenuItem retornar = new JMenuItem("Retornar");
+				retornar.setFont(new Font("Arial", Font.BOLD, 14));
 				retornar.setMnemonic('R');
 				retornar.setBackground(new Color(255, 255, 255));
 				retornar.setForeground(new Color(255, 128, 0));

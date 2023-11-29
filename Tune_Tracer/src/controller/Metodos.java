@@ -5,13 +5,17 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.JOptionPane;
 import model.dao.ConexaoSQL;
 import model.dao.FavoritosInsertDAO;
 import model.vo.FavoritosVO;
 import java.awt.Component;
 import java.io.File;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -609,7 +613,147 @@ public class Metodos {
             System.out.println(ex.getMessage());
         }
     }
+    public static void doPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/C-maior-piano.wav"));
+            tap = AudioSystem.getClip();
 
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void rePiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/D-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void miPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/E-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void faPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/F-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void solPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/G-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void laPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/A-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static void siPiano() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/acordesPiano/B-maior-piano.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     // métodos de favoritar e desfavoritar
     public static boolean manterSessaoAtivado(Connection conect) throws SQLException {
         String sql = "UPDATE manterSessão SET verificador = 1 WHERE id = 1";
@@ -634,5 +778,148 @@ public class Metodos {
             throw e;
         }
     }
+    
+    public static boolean isTemaEscuro() {
+        String lookAndFeel = UIManager.getLookAndFeel().getClass().getName();
+        return lookAndFeel.contains("FlatDarkLaf"); 
+    }
+    
+    public static void removerBackground(JComponent componente) {
+        componente.setOpaque(false);
+    }
+
+    public static void verificaTema(JComponent componente) {
+        if (isTemaEscuro()) {
+        	removerBackground(componente);
+        } else {
+            System.out.println("Tema Escuro");
+        }
+    }
+    
+    public static void som_CordaMizona() {
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_Mizona.wav"));
+            tap = AudioSystem.getClip();
+
+            tap.addLineListener(new LineListener() {
+                public void update(LineEvent event) {
+
+                    if (event.getType() == LineEvent.Type.STOP)
+                        tap.close();
+                }
+            });
+
+            tap.open(audioStream);
+            tap.start();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+	public static void som_CordaLa() {
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_La.wav"));
+			tap = AudioSystem.getClip();
+
+			tap.addLineListener(new LineListener() {
+				public void update(LineEvent event) {
+
+					if (event.getType() == LineEvent.Type.STOP)
+						tap.close();
+				}
+			});
+
+			tap.open(audioStream);
+			tap.start();
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void som_CordaRe() {
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_Ree.wav"));
+			tap = AudioSystem.getClip();
+
+			tap.addLineListener(new LineListener() {
+				public void update(LineEvent event) {
+
+					if (event.getType() == LineEvent.Type.STOP)
+						tap.close();
+				}
+			});
+
+			tap.open(audioStream);
+			tap.start();
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void som_CordaSol() {
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_Sol.wav"));
+			tap = AudioSystem.getClip();
+
+			tap.addLineListener(new LineListener() {
+				public void update(LineEvent event) {
+
+					if (event.getType() == LineEvent.Type.STOP)
+						tap.close();
+				}
+			});
+
+			tap.open(audioStream);
+			tap.start();
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void som_CordaSi() {
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_Si.wav"));
+			tap = AudioSystem.getClip();
+
+			tap.addLineListener(new LineListener() {
+				public void update(LineEvent event) {
+
+					if (event.getType() == LineEvent.Type.STOP)
+						tap.close();
+				}
+			});
+
+			tap.open(audioStream);
+			tap.start();
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void som_CordaMizinha() {
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File("songs/Corda_Mizinhaa.wav"));
+			tap = AudioSystem.getClip();
+
+			tap.addLineListener(new LineListener() {
+				public void update(LineEvent event) {
+
+					if (event.getType() == LineEvent.Type.STOP)
+						tap.close();
+				}
+			});
+
+			tap.open(audioStream);
+			tap.start();
+
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 
 }

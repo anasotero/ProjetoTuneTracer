@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import controller.Metodos;
 import model.dao.ConexaoSQL;
 import model.vo.FavoritosVO;
 
@@ -43,11 +44,15 @@ public class Favoritadas extends JFrame {
 		contentPane.setBackground(CorLaranja); // Defina a cor de fundo do painel
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		Metodos.verificaTema(contentPane);
 
 		model = new DefaultTableModel();
 		tabela = new JTable(model);
 
 		tabela.setBackground(CorFundo);
+		tabela.setForeground(Color.BLACK);
+		Font fonte = tabela.getFont();
+        fonte = fonte.deriveFont(Font.BOLD, 16f);
 
 		JScrollPane scrollPane = new JScrollPane(tabela);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -61,6 +66,7 @@ public class Favoritadas extends JFrame {
 
 		// Defina a cor de fundo do cabeçalho da tabela
 		JTableHeader header = tabela.getTableHeader();
+		header.setForeground(Color.BLACK);
 		header.setBackground(CorFundo);
 
 		carregarRegistrosDoBancoDeDados(null);
@@ -76,8 +82,9 @@ public class Favoritadas extends JFrame {
 		barra.add(btnMenu);
 
 		JMenuItem setting = new JMenuItem("Configurações");
+		setting.setFont(new Font("Arial", Font.BOLD, 14));
 		setting.setBackground(new Color(255, 145, 77));
-		setting.setForeground(new Color(255, 255, 255));
+		setting.setForeground(new Color(128, 128, 128));
 		btnMenu.add(setting);
 		setVisible(true);
 
@@ -91,6 +98,7 @@ public class Favoritadas extends JFrame {
 		});
 
 		JMenuItem retornar = new JMenuItem("Retornar");
+		retornar.setFont(new Font("Arial", Font.BOLD, 14));
 		retornar.setMnemonic('R');
 		retornar.setBackground(new Color(255, 255, 255));
 		retornar.setForeground(new Color(255, 128, 0));
@@ -111,6 +119,7 @@ public class Favoritadas extends JFrame {
 		barra.add(filtrar);
 		
 		JMenuItem btnViolao = new JMenuItem("Violão");
+		btnViolao.setFont(new Font("Arial", Font.BOLD, 14));
 		btnViolao.setMnemonic('V');
 		btnViolao.setBackground(new Color(255, 255, 255));
 		btnViolao.setForeground(new Color(255, 120, 0));
@@ -127,6 +136,7 @@ public class Favoritadas extends JFrame {
 		});
 		
 		JMenuItem btnFlauta = new JMenuItem("Flauta");
+		btnFlauta.setFont(new Font("Arial", Font.BOLD, 14));
 		btnFlauta.setMnemonic('F');
 		btnFlauta.setBackground(new Color(255, 255, 255));
 		btnFlauta.setForeground(new Color(255, 120, 0));
@@ -144,6 +154,7 @@ public class Favoritadas extends JFrame {
 		});
 		
 		JMenuItem btnTeclado = new JMenuItem("Teclado");
+		btnTeclado.setFont(new Font("Arial", Font.BOLD, 14));
 		btnTeclado.setMnemonic('T');
 		btnTeclado.setBackground(new Color(255, 255, 255));
 		btnTeclado.setForeground(new Color(255, 120, 0));
